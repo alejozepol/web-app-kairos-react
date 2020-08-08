@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TopNavbar from '../../components/top-navbar';
 import MenuHamburger from '../../components/menuHamburger';
 
 const Header = (props) => {
+  const [categories, setCategories] = useState(false);
+
+  const viewCategories = () => {
+    categories ? setCategories(false) : setCategories(true);
+  };
   return (
     <>
       <div className='Layout__header'>
-        <TopNavbar />
+        <TopNavbar onClick={viewCategories} />
       </div>
-      <div className='Layout__sideBottom'>
-        <MenuHamburger />
-      </div>
+      {
+        categories && (
+          <div className='Layout__sideBottom'>
+            <MenuHamburger />
+          </div>
+        )
+      }
     </>
   );
 };

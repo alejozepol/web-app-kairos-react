@@ -1,9 +1,7 @@
 .MenuHamburger {
-	display: none;
 	box-shadow: 1px 1px 3px black;
 	width: 100%;
 	height: 100%;
-	@include primary-bg-gradiente;
 	transition: $transition-nav;
 	&__content {
 		flex-direction: column;
@@ -18,9 +16,7 @@
 		}
 	}
 }
-.show {
-	display: block;
-}
+
 @media screen and (max-width: 580px) {
 	.MenuHamburger {
 		@include primary-bg-gradiente;
