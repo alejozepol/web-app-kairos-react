@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import TopNavbar from '../../components/top-navbar';
 import MenuHamburger from '../../components/menuHamburger';
 
-const Header = (props) => {
-  const [categories, setCategories] = useState(false);
+const Header = ({ categories }) => {
+  const [viewCategories, setViewCategories] = useState(false);
 
-  const viewCategories = () => {
-    categories ? setCategories(false) : setCategories(true);
+  const hanldCategories = () => {
+    viewCategories ? setViewCategories(false) : setViewCategories(true);
   };
   return (
     <>
       <div className='Layout__header'>
-        <TopNavbar onClick={viewCategories} />
+        <TopNavbar onClick={hanldCategories} />
       </div>
       {
-        categories && (
+        viewCategories && (
           <div className='Layout__sideBottom'>
-            <MenuHamburger />
+            <MenuHamburger categories={categories} hanldCategories={hanldCategories} />
           </div>
         )
       }
@@ -24,4 +25,13 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+const mapStatecToProps = (state) => {
+  return {
+    categories: state.categories,
+  };
+};
+
+const mapDispatchToProps = {
+};
+
+export default connect(mapStatecToProps, mapDispatchToProps)(Header);
