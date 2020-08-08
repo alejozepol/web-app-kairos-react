@@ -9,7 +9,6 @@ const Search = () => {
           search
         </i>
       </button>
-      <app-button class='search__button' type='right' icon='search' color='primary-light' />
     </form>
   );
 };
