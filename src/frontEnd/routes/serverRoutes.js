@@ -1,4 +1,4 @@
-import Home from '../container/Home';
+import Home from '../page/Home';
 import Deskboard from '../container/Deskboard';
 
 const serverRoutes = [

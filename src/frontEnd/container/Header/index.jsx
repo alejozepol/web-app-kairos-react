@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import TopNavbar from '../../components/top-navbar';
 import MenuHamburger from '../../components/menuHamburger';
 
-const Header = ({ categories, getCategories }) => {
+const Header = ({ categories }) => {
   const [viewCategories, setViewCategories] = useState(false);
 
   const hanldCategories = () => {

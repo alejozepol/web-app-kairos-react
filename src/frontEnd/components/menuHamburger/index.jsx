@@ -7,7 +7,7 @@ const MenuHamburger = (props) => {
     <section className='MenuHamburger bg-white'>
       <div className='MenuHamburger__content'>
         {
-          categories.map((item) => <Categories item={item} hanldCategories={hanldCategories} />)
+          categories.map((item) => <Categories key={item.id} item={item} hanldCategories={hanldCategories} />)
         }
       </div>
     </section>

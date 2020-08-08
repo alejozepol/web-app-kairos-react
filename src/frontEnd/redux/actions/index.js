@@ -6,4 +6,8 @@ export const getProduts = (payload) => ({
   type: 'GET_PRODUCTS',
   payload,
 });
+export const getProdutsCategories = (payload) => ({
+  type: 'GET_PRODUCTS_CATEGORIES',
+  payload,
+});
 
