@@ -1,0 +1,80 @@
+@import '../../styles/token/_var.scss';
+@import '../../styles/token/_mixins.scss';
+
+.Layout {
+  min-height: 100vh;
+  max-height: 100vh;
+  display: grid;
+  grid-template-areas:
+  "header header"
+  "sideBottom main";
+  grid-template-rows: 10vh auto;
+  grid-template-columns: auto auto;
+  transition: $transition-nav;
+  overflow: hidden;
+  &__header{
+    grid-area: header;
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    z-index: 1024;
+  }
+  &__content{
+    position: relative;
+    grid-area: main;
+    height: 90vh;
+    width: 100%;
+    justify-self: center;
+    transition: $transition-nav;
+    @include styleScrollY;
+  }
+  &__sideBottom{
+    height: 90vh;
+    width: 100%;
+    grid-area: sideBottom;
+    transition: $transition-nav;
+  }
+  &__panel{
+    height: 90vh;
+    width: 100%;
+    grid-area: sideBottom;
+    transition: $transition-nav;
+  }
+}
+.opacity{
+  position: fixed;
+  top:0;
+  z-index: 1;
+  background-color: fade-out($primary-dark, $amount: 0.2);
+  width: 100%;
+  height: 100vh;
+  transition: $transition-nav;
+}
+.main{
+  width: 100vw;
+  min-width: 70%;
+}
+
+.panel.Layout{
+  grid-template-columns: 10% auto;
+}
+.panel.Layout.active{
+  grid-template-columns: 30vw auto;
+}
+
+@media (max-width: 768px) {
+  .Layout {
+    grid-template-rows: 10vh auto;
+    &__header{
+      position: fixed;
+      z-index: 5;
+    }
+  }
+  .panel.Layout{
+    grid-template-columns: 20% auto;
+  }
+  .panel.Layout.active{
+    grid-template-columns: 90vw auto;
+  }
+}
+

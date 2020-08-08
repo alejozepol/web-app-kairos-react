@@ -1,0 +1,64 @@
+
+//  ███████╗██████╗··█████╗··██████╗██╗███╗···██╗·██████╗·
+//  ██╔════╝██╔══██╗██╔══██╗██╔════╝██║████╗··██║██╔════╝·
+//  ███████╗██████╔╝███████║██║·····██║██╔██╗·██║██║··███╗
+//  ╚════██║██╔═══╝·██╔══██║██║·····██║██║╚██╗██║██║···██║
+//  ███████║██║·····██║··██║╚██████╗██║██║·╚████║╚██████╔╝
+//  ╚══════╝╚═╝·····╚═╝··╚═╝·╚═════╝╚═╝╚═╝··╚═══╝·╚═════╝·
+
+$space:10px;
+
+@mixin constructor($num) {
+  padding:$num;
+  &_mg{
+    margin: $num !important;
+  }
+  &_top{
+    padding-top: $num !important;
+    &_mg{
+      margin-top: $num !important;
+    }
+  }
+  &_bottom{
+    padding-bottom: $num !important;
+    &_mg{
+      margin-bottom: $num !important;
+    }
+  }
+  &_left{
+    padding-left: $num !important;
+    &_mg{
+      margin-left: $num !important;
+    }
+  }
+  &_right{
+    padding-right: $num !important;
+    &_mg{
+      margin-right: $num !important;
+    }
+  }
+}
+
+.spaced{
+  padding: $space;
+}
+
+.space{
+  @include constructor($space)
+}
+
+.space_2{
+  @include constructor($space * 2)
+}
+
+.space_3{
+  @include constructor($space * 3)
+}
+
+.space_4{
+  @include constructor($space * 4)
+}
+
+.space_5{
+  @include constructor($space * 5)
+}

@@ -1,0 +1,19 @@
+.Home{
+  height: 100%;
+  display: grid;
+  grid-template-areas: "reloj text";
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  @include paddingGlobal;
+  &__img{
+    grid-area: reloj;
+    & > img{
+      width: 100%;
+    }
+  }
+  &__text{
+    grid-area: text;
+    text-align: center;
+    color: $color-primario-oscuro;
+  }
+}

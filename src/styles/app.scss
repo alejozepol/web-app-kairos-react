@@ -1,0 +1,73 @@
+/* icons */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+/* Token */
+@import "./token/_color";
+@import "./token/_type";
+@import "./token/_spacing";
+@import "./token/_mixins.scss";
+
+@import '../container/Layout/_Layout.scss';
+
+
+/* components */
+@import '../components/top-navbar/topNavbar.scss';
+@import '../components/menuHamburger/menuHamburger.scss';
+
+/* container */
+
+/* page */
+
+/* General */
+
+html,
+body {
+    font-family: $font;
+    min-height: 100vh;
+    max-height: 100vh;
+    margin: 0;
+    font-size: $font-size;
+    color: $primary-dark;
+    background-color: $light;
+}
+input,
+select {
+    width: 100%;
+    height: 2rem;
+    border-radius: 50px;
+    border: 0px;
+    box-shadow: 0px 0 5px;
+    text-align: center;
+    text-align-last: center;
+}
+textarea {
+    width: 100%;
+    height: 5rem;
+    border-radius: 20px;
+    border: 0px;
+    box-shadow: 0px 0 5px;
+    text-align: center;
+}
+input[type="radio"i] {
+    -ms-transform: scale(1.5);
+    /* IE 9 */
+    -webkit-transform: scale(1.5);
+    /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+    margin: 1%;
+    width: 10px;
+    box-shadow: initial;
+}
+
+input[type="radio"]:checked {
+    background: #0dff92;
+    border-radius: 50%;
+}
+
+input:checked + label {
+    color: $primary;
+}
+
+:focus {
+    outline: none;
+}

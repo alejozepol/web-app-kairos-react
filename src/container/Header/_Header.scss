@@ -1,0 +1,117 @@
+.Header {
+  display: grid;
+  grid-template-areas: "logo menu";
+  grid-template-columns: 300px auto;
+  grid-template-rows: 100%;
+  align-items: center;
+  background-color: $color-claro;
+  @include sombraOscura;
+  @include paddingGlobal;
+  &__logo {
+    grid-area: logo;
+    height: 100%;
+    &__link {
+      height: 100%;
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      &-img {
+        height: 70%;
+        justify-self: right;
+      }
+      &-title {
+        margin: 0%;
+        margin-left: 2%;
+        justify-self: left;
+        font-family: Script;
+        color: $color-primario-oscuro;
+      }
+    }
+  }
+  &__menu {
+    width: 100%;
+    height: 100%;
+    grid-area: menu;
+    display: flex;
+    align-items: center;
+    &-nav {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    &-item {
+      font-family: regular;
+      font-weight: 600;
+      height: 2rem;
+      width: 5rem;
+    }
+    &-avatar {
+      height: 70%;
+      border-radius: 50%;
+      & > img {
+        height: 100%;
+        border-radius: 50%;
+        border: 1px solid $color-primario-oscuro;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+      }
+    }
+    &-input {
+      display: none;
+    }
+  }
+}
+
+#toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .Header {
+    position: fixed;
+    z-index: 3;
+    width: 95vw;
+    height: 6em;
+    grid-template-columns: initial;
+    &__logo {
+      justify-items: center;
+    }
+    &__menu {
+      justify-content: flex-end;
+      &-nav {
+        position: fixed;
+        bottom: 0%;
+        right: 0%;
+        z-index: -1;
+        display: none;
+        flex-direction: column;
+        align-content: center;
+        background-color: $color-oscuro;
+        height: 94vh;
+        width: 70vw;
+      }
+      &-item {
+        font-size: 1.5rem;
+      }
+      &-input {
+        display: block;
+        &-act {
+          display: block;
+        }
+        &-inac {
+          display: none;
+        }
+      }
+    }
+  }
+  #toggle:checked ~ nav {
+    display: flex;
+  }
+  #toggle:checked ~ label > .Header__menu-input-act {
+    display: none;
+  }
+  #toggle:checked ~ label > .Header__menu-input-inac {
+    display: block;
+  }
+}

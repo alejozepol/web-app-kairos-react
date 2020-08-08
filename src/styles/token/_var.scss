@@ -1,0 +1,51 @@
+$transition-nav: 500ms;
+
+
+//  ·██████╗·██████╗·██╗······██████╗·██████╗·
+//  ██╔════╝██╔═══██╗██║·····██╔═══██╗██╔══██╗
+//  ██║·····██║···██║██║·····██║···██║██████╔╝
+//  ██║·····██║···██║██║·····██║···██║██╔══██╗
+//  ╚██████╗╚██████╔╝███████╗╚██████╔╝██║··██║
+//  ·╚═════╝·╚═════╝·╚══════╝·╚═════╝·╚═╝··╚═╝
+
+
+$primary: #0058AD;
+$primary-dark: #01132D;
+$primary-gradiente: linear-gradient(to bottom, $primary 0%, $primary-dark 100%);
+
+$contrast: #FAA519;
+$contrast-dark: #AE7311;
+$contrast-gradiente: linear-gradient(to bottom, $contrast 0%, $contrast-dark 100%);
+
+$accept: #04BF30;
+$warning: #BF046B;
+
+$light: #e6e8eb;
+$white: #FFFFFF;
+$desactive: #B3BFC1;
+
+//  ████████╗██╗···██╗██████╗··██████╗·
+//  ╚══██╔══╝╚██╗·██╔╝██╔══██╗██╔═══██╗
+//  ···██║····╚████╔╝·██████╔╝██║···██║
+//  ···██║·····╚██╔╝··██╔═══╝·██║···██║
+//  ···██║······██║···██║·····╚██████╔╝
+//  ···╚═╝······╚═╝···╚═╝······╚═════╝·
+
+
+$font: 'Lato', sans-serif;
+$font-size: 14px;
+// Typos
+$h1:2rem;
+$h2:1.8rem;
+$h3:1.3rem;
+$h4:1.2rem;
+$h5:1.1rem;
+$h6:1rem;
+$p:1rem;
+$small:0.6rem;
+
+// Typo Bolds
+
+$font-low:300;
+$font-normal:300;
+$font-title:700;

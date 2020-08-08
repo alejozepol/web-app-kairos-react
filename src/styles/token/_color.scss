@@ -1,0 +1,39 @@
+//  ·██████╗·██████╗·██╗······██████╗·██████╗·
+//  ██╔════╝██╔═══██╗██║·····██╔═══██╗██╔══██╗
+//  ██║·····██║···██║██║·····██║···██║██████╔╝
+//  ██║·····██║···██║██║·····██║···██║██╔══██╗
+//  ╚██████╗╚██████╔╝███████╗╚██████╔╝██║··██║
+//  ·╚═════╝·╚═════╝·╚══════╝·╚═════╝·╚═╝··╚═╝
+
+@import 'var';
+
+@each $color, $value in (
+  primary: $primary,
+  primary-dark :$primary-dark,
+  contrast: $contrast,
+  contrast-dark: $contrast-dark,
+  accept:$accept,
+  warning: $warning,
+  light: $light,
+  "white": $white,
+  desactive: $desactive,
+  dark: $primary-dark) {
+  .#{$color} {
+    color: $value !important
+  }
+  .bg-#{$color} {
+    background: $value !important
+  }
+};
+
+.primary-bg-gradiente{
+  background: $primary-gradiente;
+}
+
+.contrast-bg-gradiente{
+  background: $contrast-gradiente;
+}
+
+.is-invalid {
+  border: 5px solid $warning;
+}

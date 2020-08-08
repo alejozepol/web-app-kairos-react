@@ -1,0 +1,42 @@
+//  ████████╗██╗···██╗██████╗··██████╗·
+//  ╚══██╔══╝╚██╗·██╔╝██╔══██╗██╔═══██╗
+//  ···██║····╚████╔╝·██████╔╝██║···██║
+//  ···██║·····╚██╔╝··██╔═══╝·██║···██║
+//  ···██║······██║···██║·····╚██████╔╝
+//  ···╚═╝······╚═╝···╚═╝······╚═════╝·
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,700;1,100;1,700&display=swap");
+@import "var";
+
+@each $header, $size in (h1: $h1, h2: $h2, h3: $h3, h4: $h4, h5: $h5, h6: $h6) {
+  #{$header} {
+    font-family: $font;
+    font-weight: bolder;
+    font-size: $size;
+  }
+}
+
+@each $header, $size in (p: $p, li: $p, ul: $p, small: $small) {
+  #{$header} {
+    font-family: $font;
+    font-weight: $font-normal;
+    font-size: $size;
+  }
+}
+
+a,
+button {
+  font-family: $font;
+  text-decoration: none;
+  font-size: $p;
+  color: $primary-dark;
+  height: 100%;
+}
+
+input::placeholder {
+  font-family: $font;
+  font-weight: $font-low;
+  font-size: $p;
+  padding: 4%;
+  text-align: center;
+}
