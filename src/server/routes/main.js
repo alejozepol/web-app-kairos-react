@@ -7,9 +7,9 @@ import { StaticRouter } from 'react-router';
 import { renderRoutes } from 'react-router-config';
 import Routes from '../../frontend/routes/serverRoutes';
 import Layout from '../../frontend/container/Layout';
-import reducer from '../../frontend/reducers';
+import reducer from '../../frontend/redux/reducers';
 import render from '../render';
-import initialState from '../../frontend/initialState';
+import initialState from '../../frontend/redux/initialState';
 
 const main = async (req, res, next) => {
   try {

@@ -5,7 +5,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
-import reducer from './reducers';
+import reducer from './redux/reducers';
 import App from './routes';
 
 const ENV = process.env.NODE_ENV;
