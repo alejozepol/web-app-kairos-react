@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Search from '../search';
 import logo from '../../assets/images/brand/LogoBlue.png';
 
 const TopNavbar = ({ onClick }) => {
@@ -13,14 +14,14 @@ const TopNavbar = ({ onClick }) => {
         <h1 className='topNavbar__brand-name'>Kairos</h1>
       </Link>
       <div className='topNavbar__search'>
-        <h1>Buscardor</h1>
+        <Search />
       </div>
       <div className='topNavbar__car'>
         <h1>Carro</h1>
       </div>
-      {/*       <a className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
+      <Link to='login' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
         <h1>login</h1>
-      </a> */}
+      </Link>
     </nav>
   );
 };
