@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Header from '../Header';
 
 const Layout = ({ children }) => {
+
   return (
     <section className='Layout'>
       <>
@@ -14,4 +16,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default connect(null, null)(Layout);

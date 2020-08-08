@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import webpack from 'webpack';
 import express from 'express';
 import dovenv from 'dotenv';
@@ -35,8 +34,8 @@ if (ENV === 'development') {
   app.use(helmet.permittedCrossDomainPolicies());
   app.disable('x-powered-by');
 }
-app.get('*', main);
 
+app.get('*', main);
 app.listen(PORT, (err) => {
   if (err) {
     console.log(err);

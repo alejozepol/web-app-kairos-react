@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import TopNavbar from '../../components/top-navbar';
 import MenuHamburger from '../../components/menuHamburger';
 
-const Header = ({ categories }) => {
+const Header = ({ categories, getCategories }) => {
   const [viewCategories, setViewCategories] = useState(false);
 
   const hanldCategories = () => {
     viewCategories ? setViewCategories(false) : setViewCategories(true);
   };
+
   return (
     <>
       <div className='Layout__header'>
@@ -31,7 +32,4 @@ const mapStatecToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-};
-
-export default connect(mapStatecToProps, mapDispatchToProps)(Header);
+export default connect(mapStatecToProps, null)(Header);

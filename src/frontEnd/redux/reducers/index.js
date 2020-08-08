@@ -1,6 +1,3 @@
-
-const API = 'https://api.kairosshop.xyz/api';
-
 const reducer = (state, action) => {
   switch (action.type) {
     case '@@INIT': {
@@ -13,18 +10,15 @@ const reducer = (state, action) => {
           output[pair[0]] = pair.splice(1).join('=');
         });
       }
-      fetch(`${API}/categories`)
-        .then((res) => res.json())
-        .then(({ body, error }) => {
-          if (error) {
-            return console.error(res.error);
-          }
-          return body;
-        })
-        .then((res) => console.log(res));
       return {
         ...state,
         user: output,
+      };
+    }
+    case 'GET_CATEGORIES': {
+      return {
+        ...state,
+        categories: action.payload,
       };
     }
     default:
