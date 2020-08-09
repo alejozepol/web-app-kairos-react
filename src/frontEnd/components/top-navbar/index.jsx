@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Search from '../search';
 import logo from '../../assets/images/brand/LogoBlue.png';
+import iconCart from '../../assets/images/brand/cartBlue.svg';
 
 const TopNavbar = ({ onClick }) => {
   return (
@@ -16,8 +17,10 @@ const TopNavbar = ({ onClick }) => {
       <div className='topNavbar__search'>
         <Search />
       </div>
-      <div className='topNavbar__car'>
-        <h1>Carro</h1>
+      <div className='topNavbar__cart'>
+        <div className='cart'>
+          <img className='cart__logo' src={iconCart} alt='Icon Cart' />
+        </div>
       </div>
       <Link to='login' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
         <h1>login</h1>

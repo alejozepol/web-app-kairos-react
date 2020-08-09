@@ -134,6 +134,7 @@ const initialState = {
     },
   ],
   productsOfSubcategory: [],
+  cart: [],
 };
 
 export default initialState;

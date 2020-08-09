@@ -41,8 +41,10 @@
 	}
 	&__car {
 		grid-area: car;
+		align-self: center;
 	}
 	&__login {
+		align-self: center;
 		grid-area: login;
 		justify-self: flex-start;
 		height: 50%;
@@ -51,12 +53,13 @@
 }
 
 .avatar {
+	align-self: center;
 	width: 50px;
 	height: 50px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border:1px solid $contrast;
+	border: 1px solid $contrast;
 	border-radius: 100%;
 	cursor: pointer;
 	& img {
@@ -70,16 +73,94 @@
 	display: none;
 }
 
-.btnInstall{
+.btnInstall {
 	border-radius: 50%;
 	background-color: $contrast;
 	position: fixed;
 	height: 40px;
 	width: 40px;
 	right: 0%;
-	top:0%;
+	top: 0%;
 	color: $primary;
 	border: 1px solid $primary;
+}
+.cart {
+	position: relative;
+	& img {
+		width: 60px;
+		cursor: pointer;
+	}
+	& i {
+		position: absolute;
+		top: 0;
+		width: 45%;
+		height: 45%;
+		display: flex;
+		border-radius: 30px;
+		align-items: center;
+		justify-content: center;
+		color: black;
+		font-weight: 800;
+		left: 50%;
+		box-shadow: 0px 0px 5px black;
+	}
+}
+
+.animationCart {
+	animation-name: bell;
+	animation-duration: 0.8s;
+	animation-iteration-count: 1;
+	transform-origin: center top;
+	animation-timing-function: ease-out;
+}
+
+@keyframes bell {
+	from {
+		transform: rotate(35deg);
+	}
+
+	12.5% {
+		transform: rotate(-30deg);
+	}
+
+	25% {
+		transform: rotate(25deg);
+	}
+
+	35.5% {
+		transform: rotate(-20deg);
+	}
+
+	37.5% {
+		transform: rotate(-20deg);
+	}
+
+	50% {
+		transform: rotate(15deg);
+	}
+
+	62.5% {
+		transform: rotate(-10deg);
+	}
+
+	75% {
+		transform: rotate(5deg);
+	}
+
+	to {
+		transform: rotate(0deg);
+	}
+}
+
+@media screen and (max-width: 760px) {
+	.cart img {
+		width: 50px;
+	}
+}
+@media screen and (max-width: 510px) {
+	.cart img {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 580px) {
