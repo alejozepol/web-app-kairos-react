@@ -16,7 +16,6 @@ const Login = ({ loginRequest, history }) => {
       ...form,
       [event.target.name]: event.target.value,
     });
-    console.log(form);
   };
 
   const handlSubmit = (event) => {

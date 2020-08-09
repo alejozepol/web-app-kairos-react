@@ -39,6 +39,15 @@ const headers = (method, body, token, userCredentials) => {
       },
     };
   }
+  if (body) {
+    return {
+      method,
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+  }
   return {
     method,
     headers: {
@@ -65,7 +74,7 @@ const getApi = (url, token) => {
 };
 
 const postApi = (url, body, token, userCredentials) => {
-/*   console.log(headers('POST', body, token, userCredentials)); */
+  console.log(headers('POST', body, token, userCredentials));
   return fetch(`${API}/${url}`, headers('POST', body, token, userCredentials))
     .then((response) => response.json())
     .then(({ body, error }) => {
