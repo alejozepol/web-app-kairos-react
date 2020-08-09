@@ -30,8 +30,8 @@ function getCategories() {
 
 }
 
-function getProducts() {
-  return fetch(`${API}/products`)
+function getProductsOfCategory(categoryId, title) {
+  return fetch(`${API}/products/?categoryId=${categoryId}`)
     .then((response) => response.json())
     .then(({ body, error }) => {
       if (error) {
@@ -40,14 +40,23 @@ function getProducts() {
       return body;
     })
     .then((data) => {
-      initialState.products = data;
+      const object = {
+        categoryId,
+        title,
+        products: [...data],
+      };
+      initialState.productsOfCategories = [...initialState.productsOfCategories, object];
     })
     .catch((error) => console.error(error));
 }
 
 const main = async (req, res, next) => {
   getCategories()
-    .then(() => getProducts()
+    .then(() => { initialState.productsOfCategories = []; })
+    .then(() => getProductsOfCategory(initialState.categories[0].id, initialState.categories[0].title))
+    .then(() => getProductsOfCategory(initialState.categories[1].id, initialState.categories[1].title))
+    .then(() => getProductsOfCategory(initialState.categories[2].id, initialState.categories[2].title))
+    .then(() => getProductsOfCategory(initialState.categories[3].id, initialState.categories[3].title)
       .then(() => {
         try {
           const store = createStore(reducer, initialState);

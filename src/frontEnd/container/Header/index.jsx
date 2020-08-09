@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import TopNavbar from '../../components/top-navbar';
 import MenuHamburger from '../../components/menuHamburger';
 
-const Header = ({ categories }) => {
-  const [viewCategories, setViewCategories] = useState(false);
-
-  const hanldCategories = () => {
-    viewCategories ? setViewCategories(false) : setViewCategories(true);
-  };
+const Header = ({ categories, onClick, viewCategories }) => {
 
   return (
     <>
       <div className='Layout__header'>
-        <TopNavbar onClick={hanldCategories} />
+        <TopNavbar onClick={onClick} />
       </div>
       {
         viewCategories && (
           <div className='Layout__sideBottom'>
-            <MenuHamburger categories={categories} hanldCategories={hanldCategories} />
+            <MenuHamburger categories={categories} hanldCategories={onClick} />
           </div>
         )
       }

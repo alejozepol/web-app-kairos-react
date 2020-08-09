@@ -2,24 +2,31 @@ import React from 'react';
 import headerCard from '../../assets/card-head.png';
 
 const CardProducts = ({ product }) => {
+  const trimText = (text, limit) => {
+    if (text.length >= limit) {
+      return `${text.slice(0, limit)}...`;
+    }
+    return text;
+  };
+
   return (
     <section className='CardProducts'>
       <img className='CardProducts__head' src={headerCard} alt='backgound card' />
-      <div className='content content__{{type}} content__{{direction}}'>
+      <div className='content content__info'>
         <h3 className='content__title'>
-          {product.title}
+          {trimText(product.title, 30)}
         </h3>
         <div className='content__img'>
           <img src={product.urlImage} alt={product.title} />
         </div>
-        <button type='button'>Agregar</button>
+        <button type='button' className='content__button'>Agregar</button>
         <p className='content__weight'>
           <b>
-            {`${product.quantity} ${product.measure.measure}`}
+            {`${product.quantity} ${product.measure.measure || 'N/A'}`}
           </b>
         </p>
         <p className='content__description'>
-          {product.description}
+          {trimText(product.description, 60)}
         </p>
       </div>
       <div className='foo'>

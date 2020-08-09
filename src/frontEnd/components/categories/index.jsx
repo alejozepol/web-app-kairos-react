@@ -42,7 +42,7 @@ const Categories = ({ item, hanldCategories }) => {
           <div className='subcategory'>
             <ul className='subcategory-items'>
               {
-                item.subcategories.map((i) => <li><Link onClick={() => selectItem()} to={`/category/${i.id}`}>{i.title}</Link></li>)
+                item.subcategories.map((i) => <li key={i.id}><Link onClick={() => selectItem()} to={`/category/${i.id}`}>{i.title}</Link></li>)
               }
             </ul>
           </div>

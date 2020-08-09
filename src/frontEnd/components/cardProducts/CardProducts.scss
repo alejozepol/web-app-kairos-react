@@ -13,6 +13,7 @@
   justify-items: center;
   align-items: center;
   overflow: hidden;
+  max-width: 30vw;
   &__head {
     position: absolute;
     top: -1%;
@@ -22,9 +23,6 @@
       width: 100%;
       height: 100%;
     }
-  }
-  &__vertical {
-    max-width: 30vw;
   }
 }
 .foo {
@@ -69,9 +67,6 @@
   z-index: 1;
   width: 90%;
   height: 100%;
-  &__horizontal {
-    min-height: 150px;
-  }
   &__title {
     grid-area: title;
     display: grid;
@@ -126,27 +121,23 @@
     grid-area: description;
     align-self: start;
   }
-  &__super1 {
-    grid-area: super1;
-  }
-  &__super2 {
-    grid-area: super2;
-  }
-  &__super3 {
-    grid-area: super3;
-  }
-  &__super1,
-  &__super2,
-  &__super3 {
-    margin-top: 10%;
-    display: grid;
-    grid-template-rows: 80% 20%;
-    height: 100%;
-    justify-items: center;
+  &__button{
+    border-radius: 30px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    & > img {
-      width: 90%;
-      border-radius: 30px;
+    border: 1px solid $primary-dark;
+    transition: all 300ms;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    color: $light;
+    @include primary-bg-gradiente;
+    &:active{
+      transition: background 0s;
+      background: $primary-dark;
+      background-size: 100%;
     }
   }
   &:hover {
@@ -199,44 +190,6 @@
           width: initial;
         }
       }
-    }
-  }
-  &__comparation {
-    grid-template-areas:
-      "title title title"
-      "img weight weight"
-      "img description description"
-      "img action action"
-      "super1 super2 super3";
-    grid-template-rows: 15% 10% 25% 10% 25%;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 5%;
-    justify-items: center;
-    align-content: center;
-    align-items: center;
-    & .content {
-      &__action-price {
-        display: none;
-      }
-    }
-    &:hover {
-      & .content__action-add {
-        display: none;
-      }
-    }
-    &.content__horizontal {
-      width: 80%;
-      height: 90%;
-      grid-template-areas:
-        "img title title weight"
-        "img description description description"
-        "img action action action"
-        "img super1 super2 super3";
-      grid-template-rows: 15% 25% 10% 25%;
-      grid-template-columns: repeat(4, 1fr);
-      column-gap: 2%;
-      justify-content: center;
-      align-items: center;
     }
   }
 }

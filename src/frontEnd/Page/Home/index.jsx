@@ -6,7 +6,16 @@ const Home = ({ productsOfCategories }) => {
   return (
     <section className='Home'>
       {
-        productsOfCategories.map((item) => <GardenCardProducts key={item.categoryId} title={item.title} products={item.products} />)
+        productsOfCategories
+          .map((item) => (
+            <GardenCardProducts
+              more={true}
+              key={item.categoryId}
+              categoryId={item.categoryId}
+              title={item.title}
+              products={item.products.slice(0, 3)}
+            />
+          ))
       }
     </section>
   );
