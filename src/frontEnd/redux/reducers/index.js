@@ -21,6 +21,19 @@ const reducer = (state, action) => {
         categories: action.payload,
       };
     }
+    case 'GET_PRODUCTS_CATEGORY': {
+      const { products } = state.productsOfCategories.find((item) => item.categoryId === Number(action.payload)) || [];
+      const category = state.categories.find((item) => item.id === Number(action.payload)) || [];
+      const { subcategories = [] } = category;
+      for (let i = 0; i < subcategories.length; i++) {
+        const p = products.filter((p) => p.subcategoryId === subcategories[i].id) || [];
+        subcategories[i].products = p;
+      }
+      state.productsOfCategory = category;
+      return {
+        ...state,
+      };
+    }
     default:
       return state;
   }
