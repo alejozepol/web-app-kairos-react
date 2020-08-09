@@ -1,6 +1,7 @@
 import Home from '../page/Home';
 import Deskboard from '../container/Deskboard';
 import ProductsofCategory from '../Page/ProductsofCategory';
+import ProductsofSubcategory from '../Page/ProductsofSubcategory';
 
 const serverRoutes = [
   {
@@ -16,6 +17,11 @@ const serverRoutes = [
   {
     path: '/category/:id',
     component: ProductsofCategory,
+    exact: true,
+  },
+  {
+    path: '/subcategory/:id/:title',
+    component: ProductsofSubcategory,
     exact: true,
   },
 ];

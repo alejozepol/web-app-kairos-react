@@ -14,4 +14,8 @@ export const getProductsCategory = (payload) => ({
   type: 'GET_PRODUCTS_CATEGORY',
   payload,
 });
+export const getProductsSubcategory = (payload) => ({
+  type: 'GET_PRODUCTS_SUBCATEGORY',
+  payload,
+});
 

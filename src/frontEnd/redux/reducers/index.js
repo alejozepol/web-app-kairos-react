@@ -29,9 +29,16 @@ const reducer = (state, action) => {
         const p = products.filter((p) => p.subcategoryId === subcategories[i].id) || [];
         subcategories[i].products = p;
       }
+      // eslint-disable-next-line no-param-reassign
       state.productsOfCategory = category;
       return {
         ...state,
+      };
+    }
+    case 'GET_PRODUCTS_SUBCATEGORY': {
+      return {
+        ...state,
+        productsOfSubcategory: action.payload,
       };
     }
     default:

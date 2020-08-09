@@ -5,6 +5,7 @@ import CardProducts from '../../components/cardProducts';
 const _product = [
   {
     id: 1,
+    title: 'title',
     measure:
     {
       measure: 'ML',

@@ -133,6 +133,7 @@ const initialState = {
       ],
     },
   ],
+  productsOfSubcategory: [],
 };
 
 export default initialState;
