@@ -27,8 +27,4 @@ const mapStatecToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-
-};
-
-export default connect(mapStatecToProps, mapDispatchToProps)(Home);
+export default connect(mapStatecToProps, null)(Home);

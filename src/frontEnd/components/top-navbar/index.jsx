@@ -4,7 +4,9 @@ import Search from '../search';
 import logo from '../../assets/images/brand/LogoBlue.png';
 import iconCart from '../../assets/images/brand/cartBlue.svg';
 
-const TopNavbar = ({ onClick }) => {
+const TopNavbar = ({ onClick, count = 0 }) => {
+  const isCart = count > 0;
+
   return (
     <nav className='topNavbar bg-white'>
       <button type='button' className='topNavbar__hamburguer' onClick={() => onClick()}>
@@ -20,6 +22,9 @@ const TopNavbar = ({ onClick }) => {
       <div className='topNavbar__cart'>
         <div className='cart'>
           <img className='cart__logo' src={iconCart} alt='Icon Cart' />
+          {
+            isCart && (<i className='bg-contrast animation'>{count}</i>)
+          }
         </div>
       </div>
       <Link to='login' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>

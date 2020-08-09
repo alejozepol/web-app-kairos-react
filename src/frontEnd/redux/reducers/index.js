@@ -41,6 +41,12 @@ const reducer = (state, action) => {
         productsOfSubcategory: action.payload,
       };
     }
+    case 'ADD_CART': {
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
+    }
     default:
       return state;
   }

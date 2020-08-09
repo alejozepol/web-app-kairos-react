@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import TopNavbar from '../../components/top-navbar';
 import MenuHamburger from '../../components/menuHamburger';
 
-const Header = ({ categories, onClick, viewCategories }) => {
+const Header = ({ categories, onClick, viewCategories, cart }) => {
 
   return (
     <>
       <div className='Layout__header'>
-        <TopNavbar onClick={onClick} />
+        <TopNavbar onClick={onClick} count={cart.length || 0} />
       </div>
       {
         viewCategories && (
@@ -24,6 +24,7 @@ const Header = ({ categories, onClick, viewCategories }) => {
 const mapStatecToProps = (state) => {
   return {
     categories: state.categories,
+    cart: state.cart || [],
   };
 };
 

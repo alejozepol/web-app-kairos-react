@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import headerCard from '../../assets/card-head.png';
+import { addCart } from '../../redux/actions';
 
-const CardProducts = ({ product }) => {
+const CardProducts = ({ product, addCart }) => {
   const trimText = (text, limit) => {
-    if (text.length >= limit) {
+    if (text.length >= limit || text) {
       return `${text.slice(0, limit)}...`;
     }
     return text;
@@ -19,7 +21,7 @@ const CardProducts = ({ product }) => {
         <div className='content__img'>
           <img src={product.urlImage} alt={product.title} />
         </div>
-        <button type='button' className='content__button'>Agregar</button>
+        <button onClick={() => addCart(product)} type='button' className='content__button'>Agregar</button>
         <p className='content__weight'>
           <b>
             {`${product.quantity} ${product.measure.measure || 'N/A'}`}
@@ -38,4 +40,9 @@ const CardProducts = ({ product }) => {
   );
 };
 
-export default CardProducts;
+const mapDispatchToProps = {
+  addCart,
+};
+
+export default connect(null, mapDispatchToProps)(CardProducts);
+
