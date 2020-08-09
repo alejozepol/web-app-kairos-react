@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Layout from '../container/Layout';
 import Home from '../page/Home';
-import Deskboard from '../container/Deskboard';
+import Deskboard from '../Page/Deskboard';
 import ProductsofCategory from '../Page/ProductsofCategory';
 import '../styles/app.scss';
 import ProductsofSubcategory from '../Page/ProductsofSubcategory';

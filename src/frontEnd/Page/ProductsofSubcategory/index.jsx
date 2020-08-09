@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import GardenCardProducts from '../../container/gardenCardProducts';
 import { getProductsSubcategory } from '../../redux/actions';
-import getApi from '../../hooks/getApi';
+import { getApi } from '../../hooks/requestApi';
 
 const productsOfCategory = ({ productsOfSubcategory, match, getProductsSubcategory }) => {
   const { id, title } = match.params;
