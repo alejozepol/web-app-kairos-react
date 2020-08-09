@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API = 'https://api.kairosshop.xyz/api';
+const API = 'https://staging.kairosshop.xyz/api';
 
 const getApi = (url) => {
   const [state, setState] = useState([]);

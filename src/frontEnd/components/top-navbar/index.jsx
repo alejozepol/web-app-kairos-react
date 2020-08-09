@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import Search from '../search';
 import logo from '../../assets/images/brand/LogoBlue.png';
 import iconCart from '../../assets/images/brand/cartBlue.svg';
+import avatar from '../../assets/images/avatar.png';
 
-const TopNavbar = ({ onClick, count = 0 }) => {
+const TopNavbar = ({ onClick, count = 0, user }) => {
+
   const isCart = count > 0;
+  const isLogin = Object.keys(user).length !== 0 || false;
 
   return (
     <nav className='topNavbar bg-white'>
@@ -27,9 +30,26 @@ const TopNavbar = ({ onClick, count = 0 }) => {
           }
         </div>
       </div>
-      <Link to='login' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
-        <h1>login</h1>
-      </Link>
+      {
+        isLogin ? (
+          <Link to='login' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
+            { user.urlImage ? (
+              <img src={user.urlImage} alt={user.firstName} />
+            ) : (
+              <img src={avatar} alt={user.firstName} />
+            )}
+          </Link>
+        ) : (
+          <Link to='login' className='topNavbar__login'>
+            <button type='button' className='btn btn__primary'>
+              <i className='material-icons'>
+                person
+              </i>
+              Login
+            </button>
+          </Link>
+        )
+      }
     </nav>
   );
 };

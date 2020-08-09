@@ -1,0 +1,133 @@
+.register {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	&__image {
+		width: 40%;
+		margin-right: 5%;
+	}
+	& img {
+		width: 100%;
+	}
+	&__form {
+		height: 100%;
+		width: 40%;
+		display: grid;
+		grid-template-areas:
+			"title title"
+			"name lastName"
+			"email email"
+			"password password"
+			"password2 password2"
+			"button button";
+		grid-auto-rows: 1.7rem;
+		column-gap: 6%;
+		row-gap: 5%;
+	    justify-content: center;
+	    align-items: center;
+		align-content: center;
+		text-align: center;
+
+		& > input {
+			margin: 1%;
+		}
+		&-title {
+			grid-area: title;
+		}
+		&-name {
+			grid-area: name;
+		}
+		&-lastName {
+			grid-area: lastName;
+		}
+		&-email {
+			grid-area: email;
+		}
+		&-adress {
+			grid-area: adress;
+		}
+		&-password {
+			grid-area: password;
+		}
+		&-password2 {
+			grid-area: password2;
+		}
+		&-button {
+			grid-area: button;
+      align-self: flex-start;
+      & > .btn {
+        border-radius: 30px;
+        font-weight: bolder;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $primary-dark;
+        transition: all 300ms;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        &__primary {
+          color: $light;
+          @include primary-bg-gradiente;
+          &:active {
+            transition: background 0s;
+            background: $primary-dark;
+            background-size: 100%;
+          }
+          &-light {
+            background: $primary;
+            color: $light;
+          }
+        }
+      }
+		}
+
+		& p a {
+			cursor: pointer;
+			font-weight: 800 !important;
+		}
+	}
+}
+
+.space_bottom_mg {
+	margin-top: 0px;
+}
+
+@media screen and (max-width: 768px) {
+	.register {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		&__image {
+			width: 50%;
+		}
+		&__form {
+			width: 100%;
+		}
+	}
+}
+
+@media screen and (max-width: 490px) {
+	.register {
+		&__name input {
+			width: 40%;
+		}
+		&__image {
+			width: 100%;
+		}
+		&__form {
+			grid-template-areas:
+				"title"
+				"name"
+				"lastName"
+				"email"
+				"password"
+				"password2"
+				"button";
+			column-gap: 10%;
+			row-gap: 7%;
+		}
+	}
+}

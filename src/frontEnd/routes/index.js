@@ -6,6 +6,8 @@ import Deskboard from '../container/Deskboard';
 import ProductsofCategory from '../Page/ProductsofCategory';
 import '../styles/app.scss';
 import ProductsofSubcategory from '../Page/ProductsofSubcategory';
+import Login from '../Page/Login';
+import Register from '../Page/Register';
 
 const App = () => {
   return (
@@ -14,6 +16,8 @@ const App = () => {
         <Layout>
           <Route exact path='/' component={Home} />
           <Route exact path='/deskboard' component={Deskboard} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
           <Route exact path='/category/:id' component={ProductsofCategory} />
           <Route exact path='/subcategory/:id/:title' component={ProductsofSubcategory} />
         </Layout>

@@ -14,12 +14,12 @@ import initialState from '../../frontend/redux/initialState';
 
 const API = 'https://api.kairosshop.xyz/api';
 
-function getCategories() {
+async function getCategories() {
   return fetch(`${API}/categories`)
     .then((response) => response.json())
     .then(({ body, error }) => {
       if (error) {
-        return console.error(res.error);
+        return console.error(error);
       }
       return body;
     })
@@ -30,12 +30,12 @@ function getCategories() {
 
 }
 
-function getProductsOfCategory(categoryId, title) {
+async function getProductsOfCategory(categoryId, title) {
   return fetch(`${API}/products/?categoryId=${categoryId}`)
     .then((response) => response.json())
     .then(({ body, error }) => {
       if (error) {
-        return console.error(res.error);
+        return console.error(error);
       }
       return body;
     })
@@ -50,34 +50,34 @@ function getProductsOfCategory(categoryId, title) {
     .catch((error) => console.error(error));
 }
 
+async function init(req, res, next) {
+  try {
+    const store = createStore(reducer, initialState);
+    const html = renderToString(
+      <Provider store={store}>
+        <StaticRouter
+          location={req.url}
+          context={{}}
+        >
+          <Layout location={req.url}>
+            {renderRoutes(Routes)}
+          </Layout>
+        </StaticRouter>
+      </Provider>,
+    );
+    const preloadedState = store.getState();
+    res.send(render(html, preloadedState));
+  } catch (error) {
+    next(error);
+  }
+}
+
 const main = async (req, res, next) => {
-  getCategories()
+  await getCategories()
     .then(() => { initialState.productsOfCategories = []; })
-    .then(() => getProductsOfCategory(initialState.categories[0].id, initialState.categories[0].title))
-    .then(() => getProductsOfCategory(initialState.categories[1].id, initialState.categories[1].title))
-    .then(() => getProductsOfCategory(initialState.categories[2].id, initialState.categories[2].title))
-    .then(() => getProductsOfCategory(initialState.categories[3].id, initialState.categories[3].title)
-      .then(() => {
-        try {
-          const store = createStore(reducer, initialState);
-          const html = renderToString(
-            <Provider store={store}>
-              <StaticRouter
-                location={req.url}
-                context={{}}
-              >
-                <Layout location={req.url}>
-                  {renderRoutes(Routes)}
-                </Layout>
-              </StaticRouter>
-            </Provider>,
-          );
-          const preloadedState = store.getState();
-          res.send(render(html, preloadedState));
-        } catch (error) {
-          next(error);
-        }
-      }));
+    .catch((e) => console.log(e));
+  await getProductsOfCategory(initialState.categories[0].id, initialState.categories[0].title);
+  await init(req, res, next);
 };
 
 export default main;
