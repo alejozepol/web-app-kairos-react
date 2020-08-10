@@ -50,9 +50,7 @@
     "webpack": "^4.44.1",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-manifest-plugin": "^2.2.0"
-  },
-  "devDependencies": {
+    "webpack-manifest-plugin": "^2.2.0",
     "css-loader": "^3.6.0",
     "file-loader": "^6.0.0",
     "html-loader": "^0.5.5",
@@ -62,5 +60,8 @@
     "sass-loader": "^8.0.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+
   }
 }

@@ -10,12 +10,6 @@ git:
 script:
   - yarn test
   - yarn dev
-notificarions:
-  #slack: workspace:token
-  email:
-    recipients:
-      - alejozepol@gmail.com
-    on_success: always
 deploy:
   provide: heroku
   skip-cleanup: true
