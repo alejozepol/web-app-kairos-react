@@ -1,4 +1,4 @@
-/* eslint-disable import/no-unresolved */
+import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';

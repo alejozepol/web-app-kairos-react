@@ -44,4 +44,4 @@ const serverRoutes = [
   },
 ];
 
-module.exports = serverRoutes;
+export default serverRoutes;

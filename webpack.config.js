@@ -13,9 +13,9 @@ const isProd = (process.env.NODE_ENV === 'production1');
 module.exports = {
   devtool: isProd ? 'hidden-source-map' : 'cheap-source-map',
   entry: './src/frontend/index.js',
-  mode: process.env.NODE_ENV,
+  mode: 'production',
   output: {
-    path: isProd ? path.join(process.cwd(), './src/server/public') : '/',
+    path: '/',
     filename: isProd ? 'assets/app-[hash].js' : 'assets/app.js',
     publicPath: '/',
   },
