@@ -1,4 +1,4 @@
-import Home from '../page/Home';
+import Home from '../Page/Home';
 import Deskboard from '../Page/Deskboard';
 import ProductsofCategory from '../Page/ProductsofCategory';
 import ProductsofSubcategory from '../Page/ProductsofSubcategory';
