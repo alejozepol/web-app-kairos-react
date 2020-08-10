@@ -76,6 +76,7 @@ const getApi = (url, token) => {
 };
 
 const postApi = (url, body, token, userCredentials) => {
+  console.log(headers('POST', body, token, userCredentials));
   return fetch(`${API}/${url}`, headers('POST', body, token, userCredentials))
     .then((response) => response.json())
     .then(({ body, error }) => {
