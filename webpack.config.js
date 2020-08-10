@@ -16,7 +16,7 @@ module.exports = {
   mode: 'production',
   output: {
     path: '/',
-    filename: isProd ? 'assets/app-[hash].js' : 'assets/app.js',
+    filename: 'assets/app.js',
     publicPath: '/',
   },
   resolve: {
@@ -33,7 +33,7 @@ module.exports = {
           chunks: 'all',
           reuseExistingChunk: true,
           priority: 1,
-          filename: isProd ? 'assets/vendor-[hash].js' : 'assets/vendor.js',
+          filename: 'assets/vendor.js',
           enforce: true,
           test(module, chunks) {
             const name = module.nameForCondition && module.nameForCondition();
@@ -77,7 +77,7 @@ module.exports = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: isProd ? 'assets/[hash].[ext]' : 'assets/[name].[ext]',
+            name: 'assets/[name].[ext]',
           },
         }],
       },
@@ -102,7 +102,7 @@ module.exports = {
       },
     }),
     new MiniCssExtraxtPlugin({
-      filename: isProd ? 'assets/app-[hash].css' : 'assets/app.css',
+      filename: 'assets/app.css',
     }),
     isProd ? new CompressionPlugin({
       test: /\.js$|\.css$/,
