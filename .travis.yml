@@ -1,45 +1,26 @@
 language: node_js
-os: windows
-
-git:
-  depth:
-
-branches:
-  except:
-    - legacy
-
-branches:
-  only:
-  - master
-
-before_install:
-  - pyton
-
-install:
-  - npm install
-
-before_script:
-  -npm test
-
-script:
-  - npm deploy
-
-after_script:
-  - clear
-
 cache:
   directories:
-    -node_modules
-
-jobs:
-  include:
-    - stage: test
-      script: npm test
-      script: npm eslint
-    - state: deploy
-      script: npm deploy
-
+    - node_modules
+    - ~/.npm
+node_js:
+  - '12'
+git:
+  depth: 3
+script:
+  - yarn test
+  - yarn build
+notificarions:
+  #slack: workspace:token
+  email:
+    recipients:
+      - alejozepol@gmail.com
+    on_success: always
 deploy:
-  provider: heroku
-  on
-    repo: alejozepol/repo
+  provide: heroku
+  skip-cleanup: true
+  keep-history: true
+  api_key: 1663ddbb-8fd9-4786-aa94-4fc163e5496d
+  app: kairosreact
+  on:
+    repo: alejozepol/web-app-kaciros-react
