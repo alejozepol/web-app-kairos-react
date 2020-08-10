@@ -9,7 +9,7 @@ git:
   depth: 6
 script:
   - yarn test
-  - yarn build
+  - yarn dev
 notificarions:
   #slack: workspace:token
   email:
