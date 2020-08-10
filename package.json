@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "nodemon src/server/index.js --exact babel-node --open",
-    "build": "webpack --mode production",
+    "build": "node src/server/index.js --exact babel-node --open",
     "start": "node src/server/index.js --exact babel-node --open"
   },
   "keywords": [],
