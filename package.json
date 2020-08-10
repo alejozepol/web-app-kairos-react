@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon src/server/index.js --exact babel-node --open",
     "build": "webpack --mode production",
-    "start": "npm run build && node src/server/index.js --exact babel-node --open"
+    "start": "node src/server/index.js --exact babel-node --open"
   },
   "keywords": [],
   "author": "Alejandro López Ramírez",
