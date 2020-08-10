@@ -17,4 +17,4 @@ deploy:
   api_key: $HEROKU_KEY
   app: kairosreact
   on:
-    repo: alejozepol/web-app-kaciros-react
+    repo: alejozepol/web-app-kairos-react
