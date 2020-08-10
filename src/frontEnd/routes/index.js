@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Layout from '../container/Layout';
-import Home from '../page/Home';
+import Home from '../Page/Home';
 import Deskboard from '../Page/Deskboard';
 import ProductsofCategory from '../Page/ProductsofCategory';
-import '../styles/app.scss';
 import ProductsofSubcategory from '../Page/ProductsofSubcategory';
 import Login from '../Page/Login';
 import Register from '../Page/Register';
 import FormProducts from '../Page/formProducts';
+import '../styles/app.scss';
 
 const App = () => {
   return (

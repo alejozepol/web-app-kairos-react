@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getMeasures, createProdut } from '../../redux/actions';
+import { getMeasures, createProdut } from '../../redux/actions/index';
 import { getApi, postApi } from '../../hooks/requestApi';
 
 const FormProducts = ({ match, categories, createProdut, getMeasures, measures, user, history }) => {

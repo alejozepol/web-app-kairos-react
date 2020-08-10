@@ -75,18 +75,19 @@ const getApi = (url, token) => {
   return state;
 };
 
-const postApi = (url, body, token, userCredentials) => {
-  console.log(headers('POST', body, token, userCredentials));
-  return fetch(`${API}/${url}`, headers('POST', body, token, userCredentials))
-    .then((response) => response.json())
-    .then(({ body, error }) => {
-      if (error) {
-        return console.error(error);
-      }
-      return body;
-    })
-    .then((data) => data)
-    .catch((error) => console.error(error));
+const postApi = async (url, b, token, userCredentials) => {
+  console.log(headers('POST', b, token, userCredentials));
+  try {
+    const response = await fetch(`${API}/${url}`, headers('POST', b, token, userCredentials));
+    const { body, error } = await response.json();
+    if (error) {
+      return console.error(error);
+    }
+    const data = body;
+    return data;
+  } catch (error) {
+    return console.error(error);
+  }
 };
 
 export { getApi, postApi };
