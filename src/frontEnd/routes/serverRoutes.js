@@ -4,6 +4,7 @@ import ProductsofCategory from '../Page/ProductsofCategory';
 import ProductsofSubcategory from '../Page/ProductsofSubcategory';
 import Login from '../Page/Login';
 import Register from '../Page/Register';
+import FormProducts from '../Page/formProducts';
 
 const serverRoutes = [
   {
@@ -34,6 +35,11 @@ const serverRoutes = [
   {
     path: '/subcategory/:id/:title',
     component: ProductsofSubcategory,
+    exact: true,
+  },
+  {
+    path: 'deskboard/:id/:action',
+    component: FormProducts,
     exact: true,
   },
 ];

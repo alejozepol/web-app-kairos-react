@@ -8,6 +8,7 @@ import '../styles/app.scss';
 import ProductsofSubcategory from '../Page/ProductsofSubcategory';
 import Login from '../Page/Login';
 import Register from '../Page/Register';
+import FormProducts from '../Page/formProducts';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Layout>
           <Route exact path='/' component={Home} />
           <Route exact path='/deskboard' component={Deskboard} />
+          <Route exact path='/deskboard/:id/:action' component={FormProducts} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/category/:id' component={ProductsofCategory} />

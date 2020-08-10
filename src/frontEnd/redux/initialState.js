@@ -159,6 +159,7 @@ const initialState = {
       },
     },
   ],
+  measures: [],
 };
 
 export default initialState;

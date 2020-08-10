@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getApi } from '../../hooks/requestApi';
 import { getProduts } from '../../redux/actions';
 import CardProducts from '../../components/cardProducts';
@@ -17,12 +18,12 @@ const Deskboard = ({ getProduts, products, user, history }) => {
       <h2 className='Deskboard-title primary-dark'>
         Admin Products
       </h2>
-      <button type='button' className='Deskboard-btn content__button'>
+      <Link to='deskboard/new/edit' type='button' className='Deskboard-btn content__button'>
         <i className='material-icons'>
           add
         </i>
         Agregar
-      </button>
+      </Link>
       <div className='Deskboard-items'>
         {
           products.map((product) => <CardProducts key={product.id} product={product} Update={true} />)

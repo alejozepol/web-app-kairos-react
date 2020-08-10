@@ -24,6 +24,12 @@ const reducer = (state, action) => {
         categories: action.payload,
       };
     }
+    case 'GET_MEASURES': {
+      return {
+        ...state,
+        measures: action.payload,
+      };
+    }
     case 'GET_PRODUCTS_CATEGORY': {
       const { products } = state.productsOfCategories.find((item) => item.categoryId === Number(action.payload)) || [];
       const category = state.categories.find((item) => item.id === Number(action.payload)) || [];
@@ -48,6 +54,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         products: action.payload,
+      };
+    }
+    case 'CREATE_PRODUCT': {
+      return {
+        ...state,
+        products: [...state.products, action.payload],
       };
     }
     case 'ADD_CART': {

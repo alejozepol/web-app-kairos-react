@@ -1,0 +1,120 @@
+.ProductDetail {
+  height: 100%;
+  width: 90%;
+  display: grid;
+  grid-template-areas: "title" "form";
+  grid-template-columns: 90%;
+  grid-template-rows: 10% 90%;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  &__form {
+    height: 100%;
+    margin-top: 5%;
+    display: grid;
+    grid-template-areas:
+      "img status status"
+      "img title title"
+      "img quantity measure"
+      "img category subcategory"
+      "upimg description description"
+      "upimg btn btn";
+    grid-template-columns: 50% 25% 25%;
+    grid-template-rows: 4rem 4rem 4rem 4rem auto 4rem;
+    justify-items: center;
+    align-items: center;
+    column-gap: 3%;
+    row-gap: 4%;
+    & > div{
+      margin-top: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 100%;
+      height: 100%;
+    }
+    &-status {
+      grid-area: status;
+      display: grid !important;
+      grid-template-areas: "title title" "a i";
+      grid-template-columns: repeat(2, 1fr);
+      height: 80%;
+      width: 100%;
+      justify-content: center;
+      border-radius: 30px;
+      &-title {
+        grid-area: title;
+      }
+      &-a,
+      &-i {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        & > label {
+          padding-left: 10%;
+        }
+      }
+      &-a {
+        grid-area: a;
+      }
+      &-i {
+        grid-area: i;
+      }
+    }
+    &-img {
+      grid-area: img;
+      height: 100%;
+      display: grid;
+      grid-template-areas: "content";
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      & > img {
+        width: 100%;
+        grid-area: content;
+        justify-self: center;
+      }
+      & > input {
+        grid-area: content;
+        height: 100%;
+        border-radius: 10px;
+        &:checked {
+          background-color: aquamarine;
+        }
+      }
+    }
+    &-title {
+      grid-area: title;
+    }
+    &-description {
+      grid-area: description;
+    }
+    &-quantity {
+      grid-area: quantity;
+    }
+    &-measure {
+      grid-area: measure;
+    }
+    &-category {
+      grid-area: category;
+    }
+    &-subcategory {
+      grid-area: subcategory;
+    }
+    &-price {
+      grid-area: price;
+    }
+    &-btn{
+      grid-area: btn;
+      width: 100%;
+      height: 30px;
+    }
+  }
+}
+
+image-cropper {
+  grid-area: upimg;
+
+}

@@ -65,7 +65,7 @@ const getApi = (url, token) => {
       .then((response) => response.json())
       .then(({ body, error }) => {
         if (error) {
-          return console.error(res.error);
+          return console.error(error);
         }
         return body;
       })
@@ -81,7 +81,7 @@ const postApi = (url, body, token, userCredentials) => {
     .then((response) => response.json())
     .then(({ body, error }) => {
       if (error) {
-        return console.error(res.error);
+        return console.error(error);
       }
       return body;
     })

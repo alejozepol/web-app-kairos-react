@@ -8,6 +8,11 @@ export const getProduts = (payload) => ({
   payload,
 });
 
+export const createProdut = (payload) => ({
+  type: 'CREATE_PRODUCT',
+  payload,
+});
+
 export const getProductsCategories = (payload) => ({
   type: 'GET_PRODUCTS_CATEGORIES',
   payload,
@@ -40,5 +45,10 @@ export const registerRequest = (payload) => ({
 
 export const logoutRequest = (payload) => ({
   type: 'LOGOUT_REQUEST',
+  payload,
+});
+
+export const getMeasures = (payload) => ({
+  type: 'GET_MEASURES',
   payload,
 });
