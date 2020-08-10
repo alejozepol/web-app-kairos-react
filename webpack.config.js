@@ -8,7 +8,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 dotenv.config();
-const isProd = (process.env.NODE_ENV === 'production');
+const isProd = (process.env.NODE_ENV === 'production1');
 
 module.exports = {
   devtool: isProd ? 'hidden-source-map' : 'cheap-source-map',

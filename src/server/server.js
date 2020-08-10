@@ -12,7 +12,7 @@ const app = express();
 
 app.use(express.static(`${__dirname}/public`));
 
-if (ENV === 'development') {
+if (ENV !== 'production') {
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
   const webpackConfig = require('../../webpack.config');

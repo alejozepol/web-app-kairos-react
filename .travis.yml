@@ -1,0 +1,45 @@
+language: node_js
+os: windows
+
+git:
+  depth:
+
+branches:
+  except:
+    - legacy
+
+branches:
+  only:
+  - master
+
+before_install:
+  - pyton
+
+install:
+  - npm install
+
+before_script:
+  -npm test
+
+script:
+  - npm deploy
+
+after_script:
+  - clear
+
+cache:
+  directories:
+    -node_modules
+
+jobs:
+  include:
+    - stage: test
+      script: npm test
+      script: npm eslint
+    - state: deploy
+      script: npm deploy
+
+deploy:
+  provider: heroku
+  on
+    repo: alejozepol/repo

@@ -8,7 +8,7 @@ import CardProducts from '../../components/cardProducts';
 const Deskboard = ({ getProduts, products, user, history }) => {
 
   if (user) {
-    getProduts(getApi('products', user.token));
+    getProduts(getApi('products/?limit=100', user.token));
   } else {
     history.push('/');
   }

@@ -340,4 +340,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+.firebase*
+firebase*
+functions
+
+src/server/public/*
+
 # End of https://www.gitignore.io/api/react,linux,macos,windows,reactnative

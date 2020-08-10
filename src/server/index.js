@@ -8,7 +8,7 @@ const dovenv = require('dotenv');
 
 dovenv.config();
 
-const isProd = (process.env.NODE_ENV === 'production');
+const isProd = (process.env.NODE_ENV === 'production1');
 
 require('asset-require-hook')({
   extensions: ['jpg', 'png', 'gif', 'svg'],

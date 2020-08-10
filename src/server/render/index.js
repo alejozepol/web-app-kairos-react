@@ -1,6 +1,8 @@
 import dovenv from 'dotenv';
+import getManifest from '../getManifest';
 
 dovenv.config();
+const file = getManifest();
 
 const isProd = (process.env.NODE_ENV === 'production');
 
