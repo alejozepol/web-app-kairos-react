@@ -20,7 +20,7 @@ deploy:
   provide: heroku
   skip-cleanup: true
   keep-history: true
-  api_key: 1663ddbb-8fd9-4786-aa94-4fc163e5496d
+  api_key: $HEROKU_KEY
   app: kairosreact
   on:
     repo: alejozepol/web-app-kaciros-react
