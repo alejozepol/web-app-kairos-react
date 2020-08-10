@@ -4,7 +4,7 @@ import getManifest from '../getManifest';
 dovenv.config();
 const file = getManifest();
 
-const isProd = (process.env.NODE_ENV === 'production');
+const isProd = (process.env.NODE_ENV === 'production1');
 
 const render = (html, preloadedState) => {
   let css = '/assets/app.css';
