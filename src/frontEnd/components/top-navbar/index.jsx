@@ -32,7 +32,7 @@ const TopNavbar = ({ onClick, count = 0, user }) => {
       </div>
       {
         isLogin ? (
-          <Link to='login' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
+          <Link to='deskboard' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
             { user.urlImage ? (
               <img src={user.urlImage} alt={user.firstName} />
             ) : (

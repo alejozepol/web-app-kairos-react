@@ -1,15 +1,18 @@
+const getCookie = () => {
+  const nameEQ = 'kairos=';
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return JSON.parse(c.substring(nameEQ.length, c.length));
+  }
+  return null;
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
     case '@@INIT': {
-      const { cookie } = document;
-      const output = {};
-      if (cookie) {
-        cookie.split(/\s*;\s*/).forEach((pair) => {
-          // eslint-disable-next-line no-param-reassign
-          pair = pair.split(/\s*=\s*/);
-          output[pair[0]] = pair.splice(1).join('=');
-        });
-      }
+      const output = getCookie();
       return {
         ...state,
         user: output,
@@ -41,6 +44,12 @@ const reducer = (state, action) => {
         productsOfSubcategory: action.payload,
       };
     }
+    case 'GET_PRODUCTS': {
+      return {
+        ...state,
+        products: action.payload,
+      };
+    }
     case 'ADD_CART': {
       return {
         ...state,
@@ -58,6 +67,7 @@ const reducer = (state, action) => {
         user: action.payload,
       };
     case 'LOGIN_REQUEST':
+      document.cookie = `kairos=${JSON.stringify(action.payload)}; max-age=3600; path=/`;
       return {
         ...state,
         user: action.payload,

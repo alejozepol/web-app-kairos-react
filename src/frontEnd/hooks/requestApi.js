@@ -9,6 +9,7 @@ const headers = (method, body, token, userCredentials) => {
       body: JSON.stringify(body),
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
     };
   }
@@ -17,6 +18,7 @@ const headers = (method, body, token, userCredentials) => {
       method,
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
     };
   }
@@ -59,7 +61,7 @@ const headers = (method, body, token, userCredentials) => {
 const getApi = (url, token) => {
   const [state, setState] = useState([]);
   useEffect(() => {
-    fetch(`${API}/${url}`, headers('GET', token))
+    fetch(`${API}/${url}`, headers('GET', null, token))
       .then((response) => response.json())
       .then(({ body, error }) => {
         if (error) {
@@ -74,7 +76,6 @@ const getApi = (url, token) => {
 };
 
 const postApi = (url, body, token, userCredentials) => {
-  console.log(headers('POST', body, token, userCredentials));
   return fetch(`${API}/${url}`, headers('POST', body, token, userCredentials))
     .then((response) => response.json())
     .then(({ body, error }) => {
