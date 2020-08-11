@@ -38,7 +38,7 @@ const serverRoutes = [
     exact: true,
   },
   {
-    path: 'deskboard/:id/:action',
+    path: '/deskboard/product/:id',
     component: FormProducts,
     exact: true,
   },

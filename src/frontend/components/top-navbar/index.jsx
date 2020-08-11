@@ -32,7 +32,7 @@ const TopNavbar = ({ onClick, count = 0, user }) => {
       </div>
       {
         isLogin ? (
-          <Link to='deskboard' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
+          <Link to='/deskboard' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
             { user.urlImage ? (
               <img src={user.urlImage} alt={user.firstName} />
             ) : (
@@ -40,7 +40,7 @@ const TopNavbar = ({ onClick, count = 0, user }) => {
             )}
           </Link>
         ) : (
-          <Link to='login' className='topNavbar__login'>
+          <Link to='/login' className='topNavbar__login'>
             <button type='button' className='btn btn__primary'>
               <i className='material-icons'>
                 person

@@ -62,6 +62,12 @@ const reducer = (state, action) => {
         products: [...state.products, action.payload],
       };
     }
+    case 'GET_PRODUCT': {
+      return {
+        ...state,
+        product: action.payload,
+      };
+    }
     case 'GET_PRODUCTS_CATEGORIES': {
       return {
         ...state,

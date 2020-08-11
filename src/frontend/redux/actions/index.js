@@ -13,6 +13,11 @@ export const createProdut = (payload) => ({
   payload,
 });
 
+export const getProdut = (payload) => ({
+  type: 'GET_PRODUCT',
+  payload,
+});
+
 export const getProductsCategories = (payload) => ({
   type: 'GET_PRODUCTS_CATEGORIES',
   payload,

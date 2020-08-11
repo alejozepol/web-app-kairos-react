@@ -1,20 +1,44 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getMeasures, createProdut } from '../../redux/actions/index';
+import { getMeasures, createProdut, getProdut } from '../../redux/actions';
 import { getApi, postApi } from '../../hooks/requestApi';
 
-const FormProducts = ({ match, categories, createProdut, getMeasures, measures, user, history }) => {
-  // eslint-disable-next-line no-unused-vars
-  const { id, action } = match.params;
-  const [form, setValues] = useState({
-    categoryId: 1,
-    subcategoryId: 2,
-    measureId: 2,
-  });
-  const [subcategories, setSubcategories] = useState(categories.find((item) => item.id == Number(1)).subcategories);
+const FormProducts = (props) => {
+  const {
+    match,
+    categories,
+    createProdut,
+    getMeasures,
+    getProdut,
+    product,
+    measures,
+    user,
+    history,
+  } = props;
 
+  const { id } = match.params;
+  const [isNew, setIsNew] = useState(true);
+  const [form, setValues] = useState({
+    active: false,
+    categoryId: '1',
+    description: 'd',
+    measureId: '1',
+    quantity: '0',
+    subcategoryId: '1',
+    title: 'a',
+    urlImage: 'a',
+  });
+  const p = getApi(`products/${id}`);
+  useEffect(() => {
+    if (id !== 'new') {
+      setIsNew(false);
+      getProdut(p);
+    }
+  }, [p]);
+
+  const [subcategories, setSubcategories] = useState(
+    categories.find((item) => item.id == Number(1)).subcategories,
+  );
   const m = getApi('measures');
   useEffect(() => {
     getMeasures(m);
@@ -26,7 +50,8 @@ const FormProducts = ({ match, categories, createProdut, getMeasures, measures, 
       [event.target.name]: event.target.value,
     });
     if (event.target.name === 'categoryId') {
-      const s = categories.find((item) => item.id == Number(event.target.value)).subcategories;
+      const s = categories.find((item) => (
+        item.id == Number(event.target.value)).subcategories);
       setSubcategories(s);
     }
   };
@@ -49,94 +74,305 @@ const FormProducts = ({ match, categories, createProdut, getMeasures, measures, 
     <section className='ProductDetail'>
       <h2 className='ProductDetail__title'>Detail Product</h2>
       <form className='ProductDetail__form' onSubmit={handlSubmit}>
-        <div className='ProductDetail__form-status'>
-          <label className='ProductDetail__form-status-title'>
-            <b>Status</b>
-          </label>
-          <div className='ProductDetail__form-status-a'>
-            <input required id='status-a' type='radio' name='active' onChange={handleInput} />
-            <label htmlFor='status-a'>
-              Active
-            </label>
-          </div>
-          <div className='ProductDetail__form-status-i'>
-            <input id='status-i' type='radio' name='active' onChange={handleInput} />
-            <label htmlFor='status-i'>
-              Inactive
-            </label>
-          </div>
-        </div>
+        {isNew ?
+          (
+            <>
+              <div className='ProductDetail__form-status'>
+                <p className='ProductDetail__form-status-title'>
+                  <b>Status</b>
+                </p>
+                <div className='ProductDetail__form-status-a'>
+                  <label htmlFor='status-a'>
+                    Active
+                    <input
+                      id='status-a'
+                      type='radio'
+                      name='active'
+                      onChange={handleInput}
+                      required
+                    />
+                  </label>
+                </div>
+                <div className='ProductDetail__form-status-i'>
+                  <label htmlFor='status-i'>
+                    Inactive
+                    <input
+                      id='status-i'
+                      type='radio'
+                      name='active'
+                      onChange={handleInput}
+                    />
+                  </label>
+                </div>
+              </div>
 
-        <div className='ProductDetail__form-title'>
-          <label htmlFor='title'>
-            <b>Title</b>
-          </label>
-          <input required name='title' id='title' type='text' placeholder='title' onChange={handleInput} />
-        </div>
+              <div className='ProductDetail__form-title'>
+                <label htmlFor='title'>
+                  <b>Title</b>
+                  <input
+                    name='title'
+                    id='title'
+                    type='text'
+                    placeholder='title'
+                    onChange={handleInput}
+                    required
+                  />
+                </label>
+              </div>
 
-        <div className='ProductDetail__form-description'>
-          <label>
-            <b>
-              Description
-            </b>
-          </label>
-          <textarea required name='description' id='description' type='text' placeholder='description' onChange={handleInput} />
-        </div>
+              <div className='ProductDetail__form-description'>
+                <label htmlFor='description'>
+                  <b>
+                    Description
+                  </b>
+                  <textarea
+                    name='description'
+                    id='description'
+                    type='text'
+                    placeholder='description'
+                    onChange={handleInput}
+                    required
+                  />
 
-        <div className='ProductDetail__form-quantity'>
-          <label>
-            <b>
-              Quantity
-            </b>
-          </label>
-          <input required max='99999' name='quantity' type='number' placeholder='quantity' onChange={handleInput} />
-        </div>
+                </label>
+              </div>
 
-        <div className='ProductDetail__form-measure'>
-          <label>
-            <b>Measure</b>
-          </label>
-          <select required name='measureId' onChange={handleInput}>
-            {
-              measures.map((item) => <option key={item.id} value={item.id}>{item.measure}</option>)
-            }
-          </select>
-        </div>
-        <div className='ProductDetail__form-category'>
-          <label>
-            <b>Category</b>
-          </label>
-          <select required name='categoryId' onChange={handleInput}>
-            {
-              categories.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)
-            }
-          </select>
-        </div>
+              <div className='ProductDetail__form-quantity'>
+                <label htmlFor='quantity'>
+                  <b>
+                    Quantity
+                  </b>
+                  <input
+                    max='99999'
+                    name='quantity'
+                    type='number'
+                    placeholder='quantity'
+                    onChange={handleInput}
+                    required
+                  />
+                </label>
+              </div>
 
-        <div className='ProductDetail__form-subcategory'>
-          <label>
-            <b>
-              Subcategory
-            </b>
-          </label>
-          <select required name='subcategoryId' onChange={handleInput}>
-            {
-              subcategories.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)
-            }
-          </select>
-        </div>
-        <label htmlFor='urlImage' className='ProductDetail__form-img'>
-          <img src='' alt='{{ productsForm.controls.title.value }}' />
-          <img src='croppedImage' alt='{{ productsForm.controls.title.value }}' />
-          <input
-            id='urlImage'
-            type='file'
-            placeholder='Image'
-            accept='image/*'
-            onChange={handleInput}
-          />
-        </label>
-        <button to='deskboard/new/edit' type='submit' className='content__button ProductDetail__form-btn'>
+              <div className='ProductDetail__form-measure'>
+                <label htmlFor='measureId'>
+                  <b>Measure</b>
+                  <select
+                    name='measureId'
+                    onChange={handleInput}
+                    required
+                  >
+                    {
+                      measures.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.measure}
+                        </option>
+                      ))
+                    }
+                  </select>
+                </label>
+              </div>
+
+              <div className='ProductDetail__form-category'>
+                <label htmlFor='categoryId'>
+                  <b>Category</b>
+                  <select
+                    name='categoryId'
+                    onChange={handleInput}
+                    required
+                  >
+                    {
+                      categories.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.title}
+                        </option>
+                      ))
+                    }
+                  </select>
+                </label>
+              </div>
+
+              <div className='ProductDetail__form-subcategory'>
+                <label htmlFor='subcategoryId'>
+                  <b>
+                    Subcategory
+                  </b>
+                  <select
+                    name='subcategoryId'
+                    onChange={handleInput}
+                    required
+                  >
+                    {
+                      subcategories.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.title}
+                        </option>
+                      ))
+                    }
+                  </select>
+                </label>
+              </div>
+              <label htmlFor='urlImage' className='ProductDetail__form-img'>
+                <img src='{product.urlImage}' alt='{product.title}' />
+                <img src='{product.urlImage}' alt='{product.title}' />
+                <input
+                  id='urlImage'
+                  type='file'
+                  placeholder='Image'
+                  accept='image/*'
+                  onChange={handleInput}
+                />
+              </label>
+            </>
+          ) : (
+            <>
+              <div className='ProductDetail__form-status'>
+                <p className='ProductDetail__form-status-title'>
+                  <b>Status</b>
+                </p>
+                <div className='ProductDetail__form-status-a'>
+                  <label htmlFor='status-a'>
+                    Active
+                    <input
+                      id='status-a'
+                      type='radio'
+                      name='active'
+                      onChange={handleInput}
+                      required
+                    />
+                  </label>
+                </div>
+                <div className='ProductDetail__form-status-i'>
+                  <label htmlFor='status-i'>
+                    Inactive
+                    <input
+                      id='status-i'
+                      type='radio'
+                      name='active'
+                      onChange={handleInput}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div className='ProductDetail__form-title'>
+                <label htmlFor='title'>
+                  <b>Title</b>
+                  <input
+                    name='title'
+                    id='title'
+                    type='text'
+                    placeholder='title'
+                    onChange={handleInput}
+                    required
+                  />
+                </label>
+              </div>
+
+              <div className='ProductDetail__form-description'>
+                <label htmlFor='description'>
+                  <b>
+                    Description
+                  </b>
+                  <textarea
+                    name='description'
+                    id='description'
+                    type='text'
+                    placeholder='description'
+                    onChange={handleInput}
+                    required
+                  />
+
+                </label>
+              </div>
+
+              <div className='ProductDetail__form-quantity'>
+                <label htmlFor='quantity'>
+                  <b>
+                    Quantity
+                  </b>
+                  <input
+                    max='99999'
+                    name='quantity'
+                    type='number'
+                    placeholder='quantity'
+                    onChange={handleInput}
+                    required
+                  />
+                </label>
+              </div>
+
+              <div className='ProductDetail__form-measure'>
+                <label htmlFor='measureId'>
+                  <b>Measure</b>
+                  <select
+                    name='measureId'
+                    onChange={handleInput}
+                    required
+                  >
+                    {
+                      measures.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.measure}
+                        </option>
+                      ))
+                    }
+                  </select>
+                </label>
+              </div>
+
+              <div className='ProductDetail__form-category'>
+                <label htmlFor='categoryId'>
+                  <b>Category</b>
+                  <select
+                    name='categoryId'
+                    onChange={handleInput}
+                    required
+                  >
+                    {
+                      categories.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.title}
+                        </option>
+                      ))
+                    }
+                  </select>
+                </label>
+              </div>
+
+              <div className='ProductDetail__form-subcategory'>
+                <label htmlFor='subcategoryId'>
+                  <b>
+                    Subcategory
+                  </b>
+                  <select
+                    name='subcategoryId'
+                    onChange={handleInput}
+                    required
+                  >
+                    {
+                      subcategories.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.title}
+                        </option>
+                      ))
+                    }
+                  </select>
+                </label>
+              </div>
+              <label htmlFor='urlImage' className='ProductDetail__form-img'>
+                <img src='{product.urlImage}' alt='{product.title}' />
+                <img src='{product.urlImage}' alt='{product.title}' />
+                <input
+                  id='urlImage'
+                  type='file'
+                  placeholder='Image'
+                  accept='image/*'
+                  onChange={handleInput}
+                />
+              </label>
+            </>
+          )}
+        <button type='submit' className='content__button ProductDetail__form-btn'>
           <i className='material-icons'>
             add
           </i>
@@ -152,12 +388,14 @@ const mapStatecToProps = (state) => {
     categories: state.categories,
     measures: state.measures,
     user: state.user,
+    product: state.product,
   };
 };
 
 const mapDispatchToProps = {
   getMeasures,
   createProdut,
+  getProdut,
 };
 
 export default connect(mapStatecToProps, mapDispatchToProps)(FormProducts);

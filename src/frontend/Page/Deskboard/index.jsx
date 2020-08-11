@@ -18,7 +18,7 @@ const Deskboard = ({ getProduts, products, user, history }) => {
       <h2 className='Deskboard-title primary-dark'>
         Admin Products
       </h2>
-      <Link to='deskboard/new/edit' type='button' className='Deskboard-btn content__button'>
+      <Link to='/deskboard/product/new' type='button' className='Deskboard-btn content__button'>
         <i className='material-icons'>
           add
         </i>

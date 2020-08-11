@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import headerCard from '../../assets/card-head.png';
 import { addCart } from '../../redux/actions';
 
@@ -38,7 +39,14 @@ const CardProducts = ({ product = _product, addCart, Update }) => {
         </div>
         {
           Update ? (
-            <button type='button' className='content__button'>Update</button>
+            <Link to={`/deskboard/product/${product.id}`} type='button' className='content__button'>
+              <button type='button' className='content__button'>
+                <i className='material-icons'>
+                  edit
+                </i>
+                Update
+              </button>
+            </Link>
           ) : (
             <button onClick={() => addCart(product)} type='button' className='content__button'>Agregar</button>
           )
