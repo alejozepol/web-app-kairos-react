@@ -6,17 +6,38 @@ import { getApi } from '../../hooks/requestApi';
 
 const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
   const [coundIdCategory, setCoundIdCategory] = useState(1);
+  const [isIntersecting, setIntersecting] = useState(false);
 
   const observe = useRef(null);
 
+  const loadData = (isIntersecting) => {
+    if (categories.length > coundIdCategory) {
+      const resProducts = getApi(`products/?categoryId=${categories[coundIdCategory].id}`);
+      const resCategories = {
+        categoryId: categories[coundIdCategory].id,
+        title: categories[coundIdCategory].title,
+        products: resProducts,
+      };
+      if (categories.length > coundIdCategory) {
+        useEffect(() => {
+          if (resProducts.length > 0) {
+            setCoundIdCategory(coundIdCategory + 1);
+            getProductsCategories(resCategories);
+          }
+
+        }, [isIntersecting]);
+      }
+    }
+  };
+
   const useOnScreen = (ref, rootMargin = '0px') => {
-    const [isIntersecting, setIntersecting] = useState(false);
     useEffect(() => {
       const observer = new IntersectionObserver(
-        ([entry]) => {
-          setIntersecting(entry.isIntersecting);
+        (entry) => {
+          setIntersecting(entry[0].isIntersecting);
         },
         {
+          threshold: [0.2],
           rootMargin,
         },
       );
@@ -28,31 +49,13 @@ const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
       };
     }, []);
 
-    if (categories[coundIdCategory]) {
-      const resProducts = getApi(`products/?categoryId=${categories[coundIdCategory].id}`)
-      const resCategories = {
-        categoryId: categories[coundIdCategory].id,
-        title: categories[coundIdCategory].title,
-        products: resProducts,
-      };
-      console.log(resProducts)
-      console.log(coundIdCategory);
-      if (categories.length > coundIdCategory) {
-        useEffect(() => {
-          if (resProducts.length > 0) {
-            getProductsCategories(resCategories);
-            setCoundIdCategory(coundIdCategory + 1);
-            console.log(coundIdCategory);
-          }
+    loadData(isIntersecting);
 
-        }, [isIntersecting])
-      }
-    }
     return isIntersecting;
   };
 
-  const onScreen = useOnScreen(observe, '-40px');
-  console.log(observe);
+  useOnScreen(observe, '-60px');
+
   return (
     <section className='Home'>
       {
@@ -67,13 +70,16 @@ const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
             />
           ))
       }
-      <div
-        ref={observe}
-        style={{
-          height: '60px',
-          backgroundColor: onScreen ? '#23cebd' : 'red'
-        }}
-      />
+      {
+        (categories.length - 2) > coundIdCategory && (
+          <div
+            ref={observe}
+            style={{
+              height: '80px',
+            }}
+          />
+        )
+      }
     </section>
   );
 };
