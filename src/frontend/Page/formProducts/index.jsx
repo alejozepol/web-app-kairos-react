@@ -12,7 +12,6 @@ const FormProducts = (props) => {
     createProdut,
     getMeasures,
     getProdut,
-    product,
     measures,
     user,
     history,
@@ -438,7 +437,6 @@ const mapStatecToProps = (state) => {
     subcategories: state.subcategories,
     measures: state.measures,
     user: state.user,
-    product: state.product,
   };
 };
 
