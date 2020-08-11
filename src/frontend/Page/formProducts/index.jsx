@@ -20,11 +20,11 @@ const FormProducts = (props) => {
   const [isNew, setIsNew] = useState(true);
   const [form, setValues] = useState({
     active: false,
-    categoryId: '1',
+    categoryId: 1,
     description: 'd',
-    measureId: '1',
-    quantity: '0',
-    subcategoryId: '1',
+    measureId: 1,
+    quantity: 0,
+    subcategoryId: 1,
     title: 'a',
     urlImage: 'a',
   });
@@ -241,6 +241,7 @@ const FormProducts = (props) => {
                     />
                   </label>
                 </div>
+
                 <div className='ProductDetail__form-status-i'>
                   <label htmlFor='status-i'>
                     Inactive
@@ -263,6 +264,7 @@ const FormProducts = (props) => {
                     type='text'
                     placeholder='title'
                     onChange={handleInput}
+                    value={product.title}
                     required
                   />
                 </label>
@@ -279,6 +281,7 @@ const FormProducts = (props) => {
                     type='text'
                     placeholder='description'
                     onChange={handleInput}
+                    value={product.description}
                     required
                   />
 
@@ -296,6 +299,7 @@ const FormProducts = (props) => {
                     type='number'
                     placeholder='quantity'
                     onChange={handleInput}
+                    value={product.quantity}
                     required
                   />
                 </label>
@@ -359,9 +363,10 @@ const FormProducts = (props) => {
                   </select>
                 </label>
               </div>
+
               <label htmlFor='urlImage' className='ProductDetail__form-img'>
                 <img src='{product.urlImage}' alt='{product.title}' />
-                <img src='{product.urlImage}' alt='{product.title}' />
+                <img src={product.urlImage} alt='{product.title}' />
                 <input
                   id='urlImage'
                   type='file'
