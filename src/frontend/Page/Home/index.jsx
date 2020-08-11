@@ -9,7 +9,7 @@ const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
 
   const observe = useRef(null);
 
-  const useOnScreen = (ref, rootMargin = '5px') => {
+  const useOnScreen = (ref, rootMargin = '0px') => {
     const [isIntersecting, setIntersecting] = useState(false);
     useEffect(() => {
       const observer = new IntersectionObserver(
@@ -23,6 +23,9 @@ const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
       if (ref.current) {
         observer.observe(ref.current);
       }
+      return () => {
+        observer.unobserve(ref.current);
+      };
     }, []);
 
     if (categories[coundIdCategory]) {
@@ -33,27 +36,22 @@ const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
         products: resProducts,
       };
       console.log(resProducts)
-      useEffect(() => {
-        if (resProducts.length > 0) {
-          getProductsCategories(resCategories);
-          if (categories.length > coundIdCategory) {
+      console.log(coundIdCategory);
+      if (categories.length > coundIdCategory) {
+        useEffect(() => {
+          if (resProducts.length > 0) {
+            getProductsCategories(resCategories);
             setCoundIdCategory(coundIdCategory + 1);
             console.log(coundIdCategory);
           }
-        }
-      }, [resProducts])
-    }
-    /*     getProductsCategories(getApi(`products/?categoryId=${categories[coundIdCategory].id}`));
-    getProductsCategories(getApi(`products/?categoryId=${categories[coundIdCategory[1]].id}`)); */
-    /*     if (categories.length > coundIdCategory[1]) {
-      setCoundIdCategory([coundIdCategory + 1, coundIdCategory[1] + 1]);
-      console.log(coundIdCategory);
-    } */
 
+        }, [isIntersecting])
+      }
+    }
     return isIntersecting;
   };
 
-  const onScreen = useOnScreen(observe);
+  const onScreen = useOnScreen(observe, '-40px');
   console.log(observe);
   return (
     <section className='Home'>
@@ -72,8 +70,8 @@ const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
       <div
         ref={observe}
         style={{
-          height: '5px',
-          backgroundColor: onScreen ? 'red' : 'blue',
+          height: '60px',
+          backgroundColor: onScreen ? '#23cebd' : 'red'
         }}
       />
     </section>
