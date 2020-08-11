@@ -13,7 +13,7 @@ const _product = [
   },
 ];
 
-const GardenCardProducts = ({ categoryId, title, products = _product, more = false }) => {
+const GardenCardProducts = ({ categoryId, title, products = _product, more = false, handleAddToCart }) => {
   return (
     <section className='GardenCardProducts'>
       <h2 className='GardenCardProducts-title primary-dark'>
@@ -21,7 +21,7 @@ const GardenCardProducts = ({ categoryId, title, products = _product, more = fal
       </h2>
       <div className='GardenCardProducts-items'>
         {
-          products.map((product) => <CardProducts key={product.id} product={product} />)
+          products.map((product) => <CardProducts key={product.id} product={product} handleAddToCart={handleAddToCart} />)
         }
         {
           more && (

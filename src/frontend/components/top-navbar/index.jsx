@@ -5,7 +5,7 @@ import logo from '../../assets/images/brand/LogoBlue.png';
 import iconCart from '../../assets/images/brand/cartBlue.svg';
 import avatar from '../../assets/images/avatar.png';
 
-const TopNavbar = ({ onClick, count = 0, user }) => {
+const TopNavbar = ({ onClick, count = 0, user = {} }) => {
 
   const isCart = count > 0;
   const isLogin = Object.keys(user).length !== 0 || false;
@@ -33,7 +33,7 @@ const TopNavbar = ({ onClick, count = 0, user }) => {
       {
         isLogin ? (
           <Link to='/deskboard' className='topNavbar__login topNavbar__menu-btn avatar bg-light'>
-            { user.urlImage ? (
+            {user.urlImage ? (
               <img src={user.urlImage} alt={user.firstName} />
             ) : (
               <img src={avatar} alt={user.firstName} />
