@@ -80,6 +80,19 @@ const reducer = (state, action) => {
         cart: [...state.cart, action.payload],
       };
     }
+    case 'SET_SUBCATEGORIES': {
+      let s = [];
+      if (state.categories[0].subcategories) {
+        const { subcategories } = state.categories.find((item) => (
+          item.id === Number(action.payload))) || [];
+        s = subcategories;
+        console.log(subcategories);
+      };
+      return {
+        ...state,
+        subcategories: s || [],
+      };
+    }
     case 'LOGOUT_REQUEST':
       return {
         ...state,

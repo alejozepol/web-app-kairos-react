@@ -169,6 +169,38 @@ const initialState = {
     title: 'a',
     urlImage: 's',
   },
+  subcategories: [
+    {
+      'id': 2,
+      'categoryId': 1,
+      'active': true,
+      'title': 'Comida para bebés',
+      'urlImage': null,
+      'deleted': false,
+      'createdAt': '2020-07-13T05:11:27.923Z',
+      'updatedAt': '2020-07-13T05:11:27.923Z',
+    },
+    {
+      'id': 4,
+      'categoryId': 1,
+      'active': true,
+      'title': 'Accesorios para bebé',
+      'urlImage': null,
+      'deleted': false,
+      'createdAt': '2020-07-13T05:11:27.923Z',
+      'updatedAt': '2020-07-13T05:11:27.923Z',
+    },
+    {
+      'id': 1,
+      'categoryId': 1,
+      'active': true,
+      'title': 'Pañales y toallitas',
+      'urlImage': null,
+      'deleted': false,
+      'createdAt': '2020-07-13T05:11:27.923Z',
+      'updatedAt': '2020-07-13T05:11:27.923Z',
+    },
+  ],
   measures: [],
 };
 

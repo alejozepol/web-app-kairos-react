@@ -33,6 +33,11 @@ export const getProductsSubcategory = (payload) => ({
   payload,
 });
 
+export const setSubcategories = (payload) => ({
+  type: 'SET_SUBCATEGORIES',
+  payload,
+});
+
 export const addCart = (payload) => ({
   type: 'ADD_CART',
   payload,

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getMeasures, createProdut, getProdut } from '../../redux/actions';
+import { getMeasures, createProdut, getProdut, setSubcategories } from '../../redux/actions';
 import { getApi, postApi } from '../../hooks/requestApi';
 
 const FormProducts = (props) => {
   const {
     match,
     categories,
+    subcategories,
+    setSubcategories,
     createProdut,
     getMeasures,
     getProdut,
@@ -28,17 +30,17 @@ const FormProducts = (props) => {
     title: 'a',
     urlImage: 'a',
   });
+
   const p = getApi(`products/${id}`);
   useEffect(() => {
+    setSubcategories(1);
     if (id !== 'new') {
       setIsNew(false);
       getProdut(p);
+      setSubcategories(p.categoryId);
     }
   }, [p]);
 
-  const [subcategories, setSubcategories] = useState(
-    categories.find((item) => item.id == Number(1)).subcategories,
-  );
   const m = getApi('measures');
   useEffect(() => {
     getMeasures(m);
@@ -50,9 +52,7 @@ const FormProducts = (props) => {
       [event.target.name]: event.target.value,
     });
     if (event.target.name === 'categoryId') {
-      const s = categories.find((item) => (
-        item.id == Number(event.target.value)).subcategories);
-      setSubcategories(s);
+      setSubcategories(event.target.value);
     }
   };
 
@@ -312,6 +312,7 @@ const FormProducts = (props) => {
                     name='measureId'
                     onChange={handleInput}
                     required
+                    value={product.measureId}
                   >
                     {
                       measures.map((item) => (
@@ -330,6 +331,7 @@ const FormProducts = (props) => {
                   <select
                     name='categoryId'
                     onChange={handleInput}
+                    value={product.categoryId}
                     required
                   >
                     {
@@ -351,6 +353,7 @@ const FormProducts = (props) => {
                   <select
                     name='subcategoryId'
                     onChange={handleInput}
+                    value={product.subcategoryId}
                     required
                   >
                     {
@@ -391,6 +394,7 @@ const FormProducts = (props) => {
 const mapStatecToProps = (state) => {
   return {
     categories: state.categories,
+    subcategories: state.subcategories,
     measures: state.measures,
     user: state.user,
     product: state.product,
@@ -401,6 +405,7 @@ const mapDispatchToProps = {
   getMeasures,
   createProdut,
   getProdut,
+  setSubcategories,
 };
 
 export default connect(mapStatecToProps, mapDispatchToProps)(FormProducts);
