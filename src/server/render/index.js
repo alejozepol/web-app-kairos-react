@@ -1,21 +1,11 @@
 import dovenv from 'dotenv';
-import getManifest from '../getManifest';
 
 dovenv.config();
-const file = getManifest();
-
-const isProd = (process.env.NODE_ENV === 'production1');
 
 const render = (html, preloadedState) => {
-  let css = '/assets/app.css';
-  let js = '/assets/app.js';
-  let vendor = '/assets/vendor.js';
-
-  if (isProd) {
-    css = file['main.css'];
-    js = file['main.js'];
-    vendor = file['vendors.js'];
-  };
+  const css = '/assets/app.css';
+  const js = '/assets/app.js';
+  const vendor = '/assets/vendor.js';
 
   return (`<!DOCTYPE html>
   <html lang="es">
