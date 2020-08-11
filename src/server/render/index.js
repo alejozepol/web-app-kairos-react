@@ -25,12 +25,9 @@ const render = (html, preloadedState) => {
       <meta property="og:url" content="https://kairosshop.xyz/">
       <meta property="og:image" content="https://kairosshop.xyz/assets/images/brand/LogoBlue.svg">
       <title>Kairos</title>
-      <link rel="manifest" href="/manifest.json"></link>
-      <link rel="shortcut icon" href="IsotipoCuadraNegro.ico"></link>
+      <link rel="shortcut icon" href="kairos.png"></link>
       <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
       rel="stylesheet"></link>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-      <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet"></link>
       <link rel="stylesheet" href="${css}" type="text/css"></link>
   </head>
   <body>

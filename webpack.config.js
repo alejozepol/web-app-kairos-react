@@ -7,12 +7,12 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 dotenv.config();
-const isProd = (process.env.NODE_ENV === 'production');
+const isProd = (process.env.NODE_ENV === 'production1');
 
 module.exports = {
   devtool: isProd ? 'hidden-source-map' : 'cheap-source-map',
   entry: './src/frontend/index.js',
-  mode: 'production',
+  mode: 'development',
   output: {
     path: '/',
     filename: 'assets/app.js',

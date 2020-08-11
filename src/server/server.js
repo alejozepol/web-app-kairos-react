@@ -28,12 +28,12 @@ if (ENV === 'production') {
   };
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
-  console.log('Ejecucion en entorno de desarrollo');
-} else {
   console.log('Ejecucion en entorno de produccion');
+} else {
   app.use(helmet());
   app.use(helmet.permittedCrossDomainPolicies());
   app.disable('x-powered-by');
+  console.log('Ejecucion en entorno de desarrollo');
 }
 
 app.get('*', main);

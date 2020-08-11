@@ -30,9 +30,4 @@ if (typeof window !== 'undefined') {
     document.getElementById('app'),
   );
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/serviceWorker.js').catch((error) => {
-      console.log(error.message);
-    });
-  }
 }
