@@ -9,7 +9,7 @@ git:
   depth: 6
 script:
   - yarn test
-  - yarn dev
+  - yarn build
 deploy:
   provide: heroku
   skip-cleanup: true
