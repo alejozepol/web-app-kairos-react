@@ -75,10 +75,10 @@ const getApi = (url, token) => {
   return state;
 };
 
-const postApi = async (url, b, token, userCredentials) => {
-  console.log(headers('POST', b, token, userCredentials));
+const postApi = async (url, b, token, userCredentials, method = 'POST') => {
+  console.log(headers(method, b, token, userCredentials));
   try {
-    const response = await fetch(`${API}/${url}`, headers('POST', b, token, userCredentials));
+    const response = await fetch(`${API}/${url}`, headers(method, b, token, userCredentials));
     const { body, error } = await response.json();
     if (error) {
       return console.error(error);

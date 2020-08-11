@@ -64,10 +64,18 @@ const FormProducts = (props) => {
       form.active = false;
     }
     form.urlImage = 'https://images.ctfassets.net/ppt0nrovh5yl/4o2KvTtyCEhZi5WeDBjW7w/baff4852fa6fd71c7d26122ff850610d/Activia_Bebible_Natural.jpg?w=768&q=80';
-    postApi('products/', form, user.token)
-      .then((res) => createProdut(res))
-      .then(() => history.push('/deskboard'))
-      .catch((e) => setError(true));
+
+    isNew ? (
+      postApi('products/', form, user.token)
+        .then((res) => createProdut(res))
+        .then(() => history.push('/deskboard'))
+        .catch((e) => setError(true))
+    ) : (
+      postApi('products/', form, user.token, null, 'PUT')
+        .then((res) => createProdut(res))
+        .then(() => history.push('/deskboard'))
+        .catch((e) => setError(true))
+    );
   };
 
   return (
@@ -222,6 +230,12 @@ const FormProducts = (props) => {
                   onChange={handleInput}
                 />
               </label>
+              <button type='submit' className='content__button ProductDetail__form-btn'>
+                <i className='material-icons'>
+                  add
+                </i>
+                Agregar
+              </button>
             </>
           ) : (
             <>
@@ -237,6 +251,7 @@ const FormProducts = (props) => {
                       type='radio'
                       name='active'
                       onChange={handleInput}
+                      checked={product.active}
                       required
                     />
                   </label>
@@ -378,14 +393,14 @@ const FormProducts = (props) => {
                   onChange={handleInput}
                 />
               </label>
+              <button type='submit' className='content__button ProductDetail__form-btn'>
+                <i className='material-icons'>
+                  send
+                </i>
+                update
+              </button>
             </>
           )}
-        <button type='submit' className='content__button ProductDetail__form-btn'>
-          <i className='material-icons'>
-            add
-          </i>
-          Agregar
-        </button>
       </form>
     </section>
   );

@@ -86,7 +86,6 @@ const reducer = (state, action) => {
         const { subcategories } = state.categories.find((item) => (
           item.id === Number(action.payload))) || [];
         s = subcategories;
-        console.log(subcategories);
       };
       return {
         ...state,
