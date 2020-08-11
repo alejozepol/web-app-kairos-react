@@ -37,6 +37,7 @@ const FormProducts = (props) => {
     if (id !== 'new') {
       setIsNew(false);
       getProdut(p);
+      setValues(p);
       setSubcategories(p.categoryId);
     }
   }, [p]);
@@ -58,23 +59,48 @@ const FormProducts = (props) => {
 
   const handlSubmit = (event) => {
     event.preventDefault();
-    if (form.active == 'on') {
+    if (form.active === 'on' || form.active) {
       form.active = true;
     } else {
       form.active = false;
     }
-    form.urlImage = 'https://images.ctfassets.net/ppt0nrovh5yl/4o2KvTtyCEhZi5WeDBjW7w/baff4852fa6fd71c7d26122ff850610d/Activia_Bebible_Natural.jpg?w=768&q=80';
+
+    if (isNew) {
+      form.urlImage = 'https://images.ctfassets.net/ppt0nrovh5yl/4o2KvTtyCEhZi5WeDBjW7w/baff4852fa6fd71c7d26122ff850610d/Activia_Bebible_Natural.jpg?w=768&q=80';
+    }
+
+    const {
+      title,
+      categoryId,
+      subcategoryId,
+      quantity,
+      description,
+      measureId,
+      urlImage,
+      active } = form;
+
+    const body = {
+      title,
+      categoryId,
+      subcategoryId,
+      description,
+      quantity,
+      measureId,
+      urlImage,
+      active,
+    };
+    console.log(form.active);
 
     isNew ? (
-      postApi('products/', form, user.token)
+      postApi('products/', body, user.token)
         .then((res) => createProdut(res))
         .then(() => history.push('/deskboard'))
-        .catch((e) => setError(true))
+        .catch((e) => setError(e))
     ) : (
-      postApi('products/', form, user.token, null, 'PUT')
-        .then((res) => createProdut(res))
+      postApi(`products/${form.id}`, body, user.token, null, 'PUT')
+        .then(() => createProdut(form))
         .then(() => history.push('/deskboard'))
-        .catch((e) => setError(true))
+        .catch((e) => setError(e))
     );
   };
 
@@ -251,7 +277,7 @@ const FormProducts = (props) => {
                       type='radio'
                       name='active'
                       onChange={handleInput}
-                      checked={product.active}
+                      checked={form.active}
                       required
                     />
                   </label>
@@ -279,7 +305,7 @@ const FormProducts = (props) => {
                     type='text'
                     placeholder='title'
                     onChange={handleInput}
-                    value={product.title}
+                    value={form.title}
                     required
                   />
                 </label>
@@ -296,7 +322,7 @@ const FormProducts = (props) => {
                     type='text'
                     placeholder='description'
                     onChange={handleInput}
-                    value={product.description}
+                    value={form.description}
                     required
                   />
 
@@ -314,7 +340,7 @@ const FormProducts = (props) => {
                     type='number'
                     placeholder='quantity'
                     onChange={handleInput}
-                    value={product.quantity}
+                    value={form.quantity}
                     required
                   />
                 </label>
@@ -327,7 +353,7 @@ const FormProducts = (props) => {
                     name='measureId'
                     onChange={handleInput}
                     required
-                    value={product.measureId}
+                    value={form.measureId}
                   >
                     {
                       measures.map((item) => (
@@ -346,7 +372,7 @@ const FormProducts = (props) => {
                   <select
                     name='categoryId'
                     onChange={handleInput}
-                    value={product.categoryId}
+                    value={form.categoryId}
                     required
                   >
                     {
@@ -368,7 +394,7 @@ const FormProducts = (props) => {
                   <select
                     name='subcategoryId'
                     onChange={handleInput}
-                    value={product.subcategoryId}
+                    value={form.subcategoryId}
                     required
                   >
                     {
@@ -383,8 +409,8 @@ const FormProducts = (props) => {
               </div>
 
               <label htmlFor='urlImage' className='ProductDetail__form-img'>
-                <img src='{product.urlImage}' alt='{product.title}' />
-                <img src={product.urlImage} alt='{product.title}' />
+                <img src='{form.urlImage}' alt='{form.title}' />
+                <img src={form.urlImage} alt='{form.title}' />
                 <input
                   id='urlImage'
                   type='file'

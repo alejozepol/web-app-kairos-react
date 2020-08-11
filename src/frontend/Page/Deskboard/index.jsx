@@ -26,7 +26,7 @@ const Deskboard = ({ getProduts, products, user, history }) => {
       </Link>
       <div className='Deskboard-items'>
         {
-          products.map((product) => <CardProducts key={product.id} product={product} Update={true} />)
+          products.map((product) => <CardProducts key={product.id || 1} product={product} Update={true} />)
         }
       </div>
     </section>
