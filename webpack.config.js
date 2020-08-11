@@ -5,10 +5,9 @@ const webpack = require('webpack');
 const dotenv = require('dotenv');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
 
 dotenv.config();
-const isProd = (process.env.NODE_ENV === 'production1');
+const isProd = (process.env.NODE_ENV === 'production');
 
 module.exports = {
   devtool: isProd ? 'hidden-source-map' : 'cheap-source-map',
@@ -107,9 +106,6 @@ module.exports = {
     isProd ? new CompressionPlugin({
       test: /\.js$|\.css$/,
       filename: '[path].gz',
-    }) : () => { },
-    isProd ? new ManifestPlugin({
-      fileName: 'manifest-hash.json',
     }) : () => { },
   ],
 };
