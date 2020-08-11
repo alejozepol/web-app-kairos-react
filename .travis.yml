@@ -8,6 +8,7 @@ node_js:
 git:
   depth: 6
 script:
+  - yarn install
   - yarn test
   - yarn build
 deploy:
