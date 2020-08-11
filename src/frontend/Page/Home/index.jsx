@@ -5,12 +5,11 @@ import GardenCardProducts from '../../container/gardenCardProducts';
 import { getApi } from '../../hooks/requestApi';
 
 const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
-  const [coundIdCategory, setCoundIdCategory] = useState([1, 2]);
-  const [resAPI, setResAPI] = useState(null)
+  const [coundIdCategory, setCoundIdCategory] = useState(1);
 
   const observe = useRef(null);
 
-  const useOnScreen = (ref, rootMargin = '0px') => {
+  const useOnScreen = (ref, rootMargin = '5px') => {
     const [isIntersecting, setIntersecting] = useState(false);
     useEffect(() => {
       const observer = new IntersectionObserver(
@@ -26,22 +25,36 @@ const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
       }
     }, []);
 
-    /*     getProductsCategories(getApi(`products/?categoryId=${categories[coundIdCategory[0]].id}`));
+    if (categories[coundIdCategory]) {
+      const resProducts = getApi(`products/?categoryId=${categories[coundIdCategory].id}`)
+      const resCategories = {
+        categoryId: categories[coundIdCategory].id,
+        title: categories[coundIdCategory].title,
+        products: resProducts,
+      };
+      console.log(resProducts)
+      useEffect(() => {
+        if (resProducts.length > 0) {
+          getProductsCategories(resCategories);
+          if (categories.length > coundIdCategory) {
+            setCoundIdCategory(coundIdCategory + 1);
+            console.log(coundIdCategory);
+          }
+        }
+      }, [resProducts])
+    }
+    /*     getProductsCategories(getApi(`products/?categoryId=${categories[coundIdCategory].id}`));
     getProductsCategories(getApi(`products/?categoryId=${categories[coundIdCategory[1]].id}`)); */
     /*     if (categories.length > coundIdCategory[1]) {
-      setCoundIdCategory([coundIdCategory[0] + 1, coundIdCategory[1] + 1]);
+      setCoundIdCategory([coundIdCategory + 1, coundIdCategory[1] + 1]);
       console.log(coundIdCategory);
     } */
-    if (categories[coundIdCategory[0]]) {
-      const res = getApi(`products/?categoryId=${categories[coundIdCategory[0]].id}`)
-      console.log(res)
-    }
+
     return isIntersecting;
   };
 
   const onScreen = useOnScreen(observe);
   console.log(observe);
-
   return (
     <section className='Home'>
       {
@@ -59,7 +72,8 @@ const Home = ({ productsOfCategories, getProductsCategories, categories }) => {
       <div
         ref={observe}
         style={{
-          backgroundColor: onScreen ? 'transparent' : 'transparent',
+          height: '5px',
+          backgroundColor: onScreen ? 'red' : 'blue',
         }}
       />
     </section>
