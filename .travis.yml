@@ -17,3 +17,4 @@ deploy:
   app: kairosreact
   on:
     repo: alejozepol/web-app-kairos-react
+    branch: master
