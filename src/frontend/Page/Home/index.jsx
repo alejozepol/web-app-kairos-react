@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getProductsCategories, addCart } from '../../redux/actions';
+import { getProductsCategories } from '../../redux/actions';
 import GardenCardProducts from '../../container/gardenCardProducts';
 import { getApi } from '../../hooks/requestApi';
 
@@ -9,10 +9,6 @@ const Home = ({ productsOfCategories, getProductsCategories, categories, addCart
   const [isIntersecting, setIntersecting] = useState(false);
 
   const observe = useRef(null);
-
-  const handleAddToCart = (product) => () => {
-    addCart(product);
-  };
 
   const loadData = async (isIntersecting) => {
     const resProducts = getApi(`products/?categoryId=${categories[coundIdCategory].id}`);
@@ -71,7 +67,6 @@ const Home = ({ productsOfCategories, getProductsCategories, categories, addCart
               categoryId={item.categoryId}
               title={item.title}
               products={item.products.slice(0, 3)}
-              handleAddToCart={handleAddToCart}
             />
           ))
       }
@@ -99,7 +94,6 @@ const mapStatecToProps = (state) => {
 
 const mapDispatchToProps = {
   getProductsCategories,
-  addCart,
 };
 
 export default connect(mapStatecToProps, mapDispatchToProps)(Home);

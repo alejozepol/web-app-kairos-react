@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import headerCard from '../../assets/card-head.png';
+import { addCart } from '../../redux/actions';
 
 const _product = [
   {
@@ -14,13 +16,14 @@ const _product = [
   },
 ];
 
-const CardProducts = ({ product = _product, handleAddToCart, Update }) => {
+const CardProducts = ({ product = _product, addCart, Update }) => {
   const trimText = (text, limit) => {
     if (text.length >= limit || text) {
       return `${text.slice(0, limit)}...`;
     }
     return text;
   };
+
   return (
     <section className='CardProducts'>
       <img className='CardProducts__head' src={headerCard} alt='backgound card' />
@@ -46,7 +49,7 @@ const CardProducts = ({ product = _product, handleAddToCart, Update }) => {
               </button>
             </Link>
           ) : (
-            <button onClick={handleAddToCart(product)} type='button' className='content__button content__button-add'>Agregar</button>
+            <button onClick={() => addCart(product)} type='button' className='content__button content__button-add'>Agregar</button>
           )
         }
         <p className='content__weight'>
@@ -75,5 +78,9 @@ const CardProducts = ({ product = _product, handleAddToCart, Update }) => {
   );
 };
 
-export default CardProducts;
+const mapDispatchToProps = {
+  addCart,
+};
+
+export default connect(null, mapDispatchToProps)(CardProducts);
 
