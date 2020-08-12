@@ -9,6 +9,9 @@
     "build": "node src/server/index.js --exact babel-node --open",
     "start": "node src/server/index.js --exact babel-node --open"
   },
+  "engines": {
+    "node": "12"
+  },
   "keywords": [],
   "author": "Alejandro López Ramírez",
   "license": "ISC",
