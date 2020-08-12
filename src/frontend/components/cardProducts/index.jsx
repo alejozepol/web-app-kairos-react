@@ -46,7 +46,7 @@ const CardProducts = ({ product = _product, handleAddToCart, Update }) => {
               </button>
             </Link>
           ) : (
-            <button onClick={handleAddToCart(product)} type='button' className='content__button content__button-add'>Agregar</button>
+            <button onClick={() => handleAddToCart(product)} type='button' className='content__button content__button-add'>Agregar</button>
           )
         }
         <p className='content__weight'>

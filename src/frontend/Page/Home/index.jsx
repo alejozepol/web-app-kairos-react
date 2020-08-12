@@ -66,8 +66,8 @@ const Home = ({ productsOfCategories, getProductsCategories, categories, addCart
         productsOfCategories
           .map((item) => (
             <GardenCardProducts
-              more={true}
               key={item.categoryId}
+              more={true}
               categoryId={item.categoryId}
               title={item.title}
               products={item.products.slice(0, 3)}

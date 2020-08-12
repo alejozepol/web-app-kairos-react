@@ -7,6 +7,7 @@ const Categories = ({ item, hanldCategories }) => {
 
   const viewSubcategory = () => {
     itemActive ? setItemActive(false) : setItemActive(true);
+
   };
   const selectItem = () => {
     hanldCategories();
@@ -14,7 +15,7 @@ const Categories = ({ item, hanldCategories }) => {
   };
   return (
     <>
-      <div role='button' tabIndex='0' className='category' onClick={() => viewSubcategory()}>
+      <div role='button' tabIndex='0' className='category' onClick={viewSubcategory}>
         <div className='category__image'>
           {
             item.urlImage ? (
