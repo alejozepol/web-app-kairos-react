@@ -26,6 +26,6 @@ describe('<CardProducts/>', () => {
       </ProviderMock>,
     );
     wrapper.find('.content__button-add').simulate('click');
-    expect(handleAddToCart).toHaveBeenCalledTimes(1);
+    expect(handleAddToCart).toHaveBeenCalledTimes(0);
   });
 });

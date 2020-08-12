@@ -8,7 +8,8 @@ node_js:
 git:
   depth: 3
 script:
-  - yarn build
+  - yarn install jest
+  - yarn test
 deploy:
   provide: heroku
   skip-cleanup: true
