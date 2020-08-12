@@ -19,7 +19,7 @@ if (ENV === 'production') {
   const webpackConfig = require('../../webpack.config');
   const compiler = webpack(webpackConfig);
   const serverConfig = {
-    contentBase: `http://localhost:${PORT}`,
+    contentBase: '/',
     port: PORT,
     publicPath: webpackConfig.output.publicPath,
     hot: true,
