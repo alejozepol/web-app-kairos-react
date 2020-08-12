@@ -7,8 +7,9 @@ node_js:
   - '12'
 git:
   depth: 3
+before_script:
+  -yarn add jest enzyme enzyme-adapter-react-16
 script:
-  - yarn add jest
   - yarn test
 deploy:
   provide: heroku
