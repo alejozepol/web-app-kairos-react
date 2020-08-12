@@ -10,10 +10,9 @@ node_js:
 git:
   depth: 3
 before_script:
-  - yarn add jest
-  - yarn add enzyme enzyme-adapter-react-16
+  - npm install
 script:
-  - yarn test
+  - npm run test
 deploy:
   provide: heroku
   skip-cleanup: true
