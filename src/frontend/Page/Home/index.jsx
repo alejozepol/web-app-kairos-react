@@ -14,14 +14,14 @@ const Home = ({ productsOfCategories, getProductsCategories, categories, addCart
     addCart(product);
   };
 
-  const loadData = (isIntersecting) => {
+  const loadData = async (isIntersecting) => {
+    const resProducts = getApi(`products/?categoryId=${categories[coundIdCategory].id}`);
+    const resCategories = {
+      categoryId: categories[coundIdCategory].id,
+      title: categories[coundIdCategory].title,
+      products: resProducts,
+    };
     if (categories.length > coundIdCategory) {
-      const resProducts = getApi(`products/?categoryId=${categories[coundIdCategory].id}`);
-      const resCategories = {
-        categoryId: categories[coundIdCategory].id,
-        title: categories[coundIdCategory].title,
-        products: resProducts,
-      };
       if (categories.length > coundIdCategory) {
         useEffect(() => {
           if (resProducts.length > 0) {
@@ -29,7 +29,7 @@ const Home = ({ productsOfCategories, getProductsCategories, categories, addCart
             getProductsCategories(resCategories);
           }
 
-        }, [isIntersecting]);
+        }, [isIntersecting, resProducts]);
       }
     }
   };
@@ -80,7 +80,7 @@ const Home = ({ productsOfCategories, getProductsCategories, categories, addCart
           <div
             ref={observe}
             style={{
-              height: '80px',
+              height: '100px',
             }}
           />
         )

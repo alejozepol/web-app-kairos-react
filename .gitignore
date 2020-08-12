@@ -344,6 +344,4 @@ $RECYCLE.BIN/
 firebase*
 functions
 
-src/server/public/*
-
 # End of https://www.gitignore.io/api/react,linux,macos,windows,reactnative

@@ -31,8 +31,11 @@ const reducer = (state, action) => {
       };
     }
     case 'GET_PRODUCTS_CATEGORY': {
-      const { products } = state.productsOfCategories.find((item) => item.categoryId === Number(action.payload)) || [];
-      const category = state.categories.find((item) => item.id === Number(action.payload)) || [];
+      const products = action.payload || [];
+      let category = [];
+      if (products.length > 0) {
+        category = state.categories.find((item) => item.id === products[0].categoryId) || [];
+      }
       const { subcategories = [] } = category;
       for (let i = 0; i < subcategories.length; i++) {
         const p = products.filter((p) => p.subcategoryId === subcategories[i].id) || [];

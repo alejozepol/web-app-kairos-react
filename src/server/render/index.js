@@ -3,9 +3,9 @@ import dovenv from 'dotenv';
 dovenv.config();
 
 const render = (html, preloadedState) => {
-  const css = 'assets/app.css';
-  const js = 'assets/app.js';
-  const vendor = 'assets/vendor.js';
+  const css = '/assets/app.css';
+  const js = '/assets/app.js';
+  const vendor = '/assets/vendor.js';
 
   return (`<!DOCTYPE html>
   <html lang="es">

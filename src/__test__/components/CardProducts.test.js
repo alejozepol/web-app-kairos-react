@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import ProviderMock from '../../__mocks__/ProviderMock';
-import productsMock from '../../__mocks__/productsMock';
+import productMock from '../../__mocks__/productMock';
 import CardProducts from '../../frontend/components/cardProducts';
 
 describe('<CardProducts/>', () => {
@@ -20,7 +20,7 @@ describe('<CardProducts/>', () => {
     const wrapper = mount(
       <ProviderMock>
         <CardProducts
-          product={productsMock}
+          product={productMock}
           handleAddToCart={handleAddToCart}
         />
       </ProviderMock>,

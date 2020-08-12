@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API = 'https://staging.kairosshop.xyz/api';
+const API = 'https://api.kairosshop.xyz/api';
 
 const headers = (method, body, token, userCredentials) => {
   if (token && body) {
@@ -59,6 +59,7 @@ const headers = (method, body, token, userCredentials) => {
 };
 
 const getApi = (url, token) => {
+  console.log(url);
   const [state, setState] = useState([]);
   useEffect(() => {
     fetch(`${API}/${url}`, headers('GET', null, token))
@@ -72,6 +73,7 @@ const getApi = (url, token) => {
       .then((data) => setState(data))
       .catch((error) => console.error(error));
   }, []);
+
   return state;
 };
 

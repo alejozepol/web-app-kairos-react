@@ -4,13 +4,15 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import GardenCardProducts from '../../container/gardenCardProducts';
 import { getProductsCategory } from '../../redux/actions';
+import { getApi } from '../../hooks/requestApi';
 
 const productsOfCategory = ({ productsOfCategory, match, getProductsCategory }) => {
   const { id } = match.params;
 
+  const products = getApi(`products/?categoryId=${id}&limit=100`);
   useEffect(() => {
-    getProductsCategory(id);
-  }, []);
+    getProductsCategory(products);
+  }, [products]);
 
   const { title, subcategories = [] } = productsOfCategory;
 

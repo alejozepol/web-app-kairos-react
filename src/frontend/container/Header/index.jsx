@@ -23,7 +23,7 @@ const Header = ({ categories, onClick, viewCategories, cart, user }) => {
 
 const mapStatecToProps = (state) => {
   return {
-    categories: state.categories,
+    categories: state.categories || [],
     cart: state.cart || [],
     user: state.user || {},
   };
