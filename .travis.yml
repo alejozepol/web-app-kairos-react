@@ -8,7 +8,7 @@ node_js:
 git:
   depth: 3
 script:
-  - yarn install jest
+  - yarn add jest
   - yarn test
 deploy:
   provide: heroku
