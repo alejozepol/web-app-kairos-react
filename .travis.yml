@@ -9,7 +9,7 @@ git:
   depth: 3
 before_script:
   - yarn add jest
-  - yarn enzyme enzyme-adapter-react-16
+  - yarn add enzyme enzyme-adapter-react-16
 script:
   - yarn test
 deploy:
