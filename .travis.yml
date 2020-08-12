@@ -1,6 +1,4 @@
 language: node_js
-os:
-  - windows
 cache:
   directories:
     - node_modules
@@ -9,10 +7,8 @@ node_js:
   - '12'
 git:
   depth: 3
-before_script:
-  - npm install
 script:
-  - npm run test
+  - npm run build
 deploy:
   provide: heroku
   skip-cleanup: true
