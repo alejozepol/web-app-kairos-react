@@ -59,7 +59,6 @@ const headers = (method, body, token, userCredentials) => {
 };
 
 const getApi = (url, token) => {
-  console.log(url);
   const [state, setState] = useState([]);
   useEffect(() => {
     fetch(`${API}/${url}`, headers('GET', null, token))
@@ -68,7 +67,6 @@ const getApi = (url, token) => {
         if (error) {
           return console.error(error);
         }
-        console.log(body);
         return body;
       })
       .then((data) => setState(data))

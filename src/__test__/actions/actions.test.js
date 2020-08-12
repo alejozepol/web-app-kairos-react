@@ -1,6 +1,7 @@
-import { addCart, getCategories, getProduts, createProdut, getProdut } from '../../frontend/redux/actions';
+import { addCart, getCategories, getProduts, createProdut, getProdut, getProductsCategories, getProductsCategory } from '../../frontend/redux/actions';
 import CategoryMock from '../../__mocks__/categoryMock';
 import ProductMock from '../../__mocks__/productMock';
+import productsOfCategoryMock from '../../__mocks__/productsOfCategoryMock';
 
 describe('====> Actions ====> ', () => {
 
@@ -47,6 +48,24 @@ describe('====> Actions ====> ', () => {
       payload,
     };
     expect(createProdut(payload)).toEqual(expected);
+  });
+
+  test('action ==> getProductsCategories', () => {
+    const payload = [productsOfCategoryMock];
+    const expected = {
+      type: 'GET_PRODUCTS_CATEGORIES',
+      payload,
+    };
+    expect(getProductsCategories(payload)).toEqual(expected);
+  });
+
+  test('action ==> getProductsCategory', () => {
+    const payload = productsOfCategoryMock;
+    const expected = {
+      type: 'GET_PRODUCTS_CATEGORY',
+      payload,
+    };
+    expect(getProductsCategory(payload)).toEqual(expected);
   });
 
 });
