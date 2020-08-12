@@ -68,11 +68,12 @@ const getApi = (url, token) => {
         if (error) {
           return console.error(error);
         }
+        console.log(body);
         return body;
       })
       .then((data) => setState(data))
       .catch((error) => console.error(error));
-  }, []);
+  }, [url]);
 
   return state;
 };
