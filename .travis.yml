@@ -8,7 +8,7 @@ node_js:
 git:
   depth: 6
 script:
-  - yarn test
+  - yarn run test
 deploy:
   provide: heroku
   skip-cleanup: true
