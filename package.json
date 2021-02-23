@@ -1,90 +1,91 @@
 {
-  "name": "web-app-kairos-react",
-  "version": "1.0.0",
-  "description": "This project is the Kairos frontend, a web app in construction that allows you to offer products and compare prices from different supermarkets.",
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "dev": "nodemon src/server/index.js --exact babel-node --open",
-    "build": "echo \"Error: no test specified\" && exit 0",
-    "start": "node src/server/index.js --exact babel-node --open"
-  },
-  "engines": {
-    "node": "12"
-  },
-  "keywords": [],
-  "author": "Alejandro López Ramírez",
-  "license": "ISC",
-  "dependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/plugin-transform-runtime": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/register": "^7.10.5",
-    "asset-require-hook": "^1.2.0",
-    "autoprefixer": "^9.8.6",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.1.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "compression-webpack-plugin": "^4.0.0",
-    "dotenv": "^8.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.5",
-    "express": "^4.17.1",
-    "helmet": "^4.0.0",
-    "history": "^5.0.0",
-    "ignore-styles": "^5.0.1",
-    "node-fetch": "^2.6.0",
-    "nodemon": "^2.0.4",
-    "postcss-loader": "^3.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.1",
-    "react-router": "^5.2.0",
-    "react-router-config": "^5.1.1",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "terser-webpack-plugin": "^4.0.0",
-    "webpack": "^4.44.1",
-    "webpack-dev-middleware": "^3.7.2",
-    "webpack-hot-middleware": "^2.25.0",
-    "css-loader": "^3.6.0",
-    "file-loader": "^6.0.0",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.8.2",
-    "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
-  },
-  "devDependencies": {
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.3",
-    "jest": "^26.3.0"
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/__test__/setupTest.js"
-    ],
-    "moduleNameMapper": {
-      "\\.(sass|css)": "<rootDir>/src/__mocks__/styleMock.js",
-      "\\.(png|jpg|svg)": "<rootDir>/src/__mocks__/styleMock.js"
-    }
-  },
-  "main": "postcss.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alejozepol/web-app-kairos-react.git"
-  },
-  "bugs": {
-    "url": "https://github.com/alejozepol/web-app-kairos-react/issues"
-  },
-  "homepage": "https://github.com/alejozepol/web-app-kairos-react#readme"
+    "name": "web-app-kairos-react",
+    "version": "1.0.0",
+    "description": "This project is the Kairos frontend, a web app in construction that allows you to offer products and compare prices from different supermarkets.",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "dev": "nodemon src/server/index.js --exact babel-node --open",
+        "build": "echo \"Error: no test specified\" && exit 0",
+        "start": "node src/server/index.js --exact babel-node --open"
+    },
+    "engines": {
+        "node": "12"
+    },
+    "keywords": [],
+    "author": "Alejandro López Ramírez",
+    "license": "ISC",
+    "dependencies": {
+        "@babel/core": "^7.11.1",
+        "@babel/plugin-transform-runtime": "^7.11.0",
+        "@babel/preset-env": "^7.11.0",
+        "@babel/preset-react": "^7.10.4",
+        "@babel/register": "^7.10.5",
+        "asset-require-hook": "^1.2.0",
+        "autoprefixer": "^9.8.6",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.1.0",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-plugin-transform-object-assign": "^6.22.0",
+        "compression-webpack-plugin": "^4.0.0",
+        "dotenv": "^8.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb": "^18.2.0",
+        "eslint-loader": "^4.0.2",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-jsx-a11y": "^6.3.1",
+        "eslint-plugin-react": "^7.20.5",
+        "express": "^4.17.1",
+        "helmet": "^4.0.0",
+        "history": "^5.0.0",
+        "ignore-styles": "^5.0.1",
+        "node-fetch": "^2.6.0",
+        "nodemon": "^2.0.4",
+        "postcss-loader": "^3.0.0",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-redux": "^7.2.1",
+        "react-router": "^5.2.0",
+        "react-router-config": "^5.1.1",
+        "react-router-dom": "^5.2.0",
+        "redux": "^4.0.5",
+        "redux-thunk": "^2.3.0",
+        "terser-webpack-plugin": "^4.0.0",
+        "webpack": "^4.44.1",
+        "webpack-dev-middleware": "^3.7.2",
+        "webpack-hot-middleware": "^2.25.0",
+        "css-loader": "^3.6.0",
+        "file-loader": "^6.0.0",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^0.8.2",
+        "node-sass": "^4.14.1",
+        "sass-loader": "^8.0.2",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.3",
+        "jest": "^26.3.0"
+    },
+    "devDependencies": {
+
+    },
+    "jest": {
+        "setupFilesAfterEnv": [
+            "<rootDir>/src/__test__/setupTest.js"
+        ],
+        "moduleNameMapper": {
+            "\\.(sass|css)": "<rootDir>/src/__mocks__/styleMock.js",
+            "\\.(png|jpg|svg)": "<rootDir>/src/__mocks__/styleMock.js"
+        }
+    },
+    "main": "postcss.config.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/alejozepol/web-app-kairos-react.git"
+    },
+    "bugs": {
+        "url": "https://github.com/alejozepol/web-app-kairos-react/issues"
+    },
+    "homepage": "https://github.com/alejozepol/web-app-kairos-react#readme"
 }
