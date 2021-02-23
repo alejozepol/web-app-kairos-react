@@ -1,7 +1,7 @@
 {
   "name": "web-app-kairos-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project is the Kairos frontend, a web app in construction that allows you to offer products and compare prices from different supermarkets.",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
@@ -77,5 +77,14 @@
       "\\.(sass|css)": "<rootDir>/src/__mocks__/styleMock.js",
       "\\.(png|jpg|svg)": "<rootDir>/src/__mocks__/styleMock.js"
     }
-  }
+  },
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejozepol/web-app-kairos-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alejozepol/web-app-kairos-react/issues"
+  },
+  "homepage": "https://github.com/alejozepol/web-app-kairos-react#readme"
 }
